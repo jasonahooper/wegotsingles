@@ -8,6 +8,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'thin'
+gem 'haml'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
