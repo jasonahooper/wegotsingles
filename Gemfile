@@ -8,3 +8,16 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'thin'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 2.0'
+  gem 'shoulda-matchers'
+  gem 'machinist', '>= 2.0.0.beta2'
+  gem 'faker'
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'mocha'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
+  gem 'launchy'
+end
