@@ -1,7 +1,10 @@
 class ProfilesController < ApplicationController
+  def update
+    binding.pry
+  end
+
   def create
     @profile = Profile.new(profile_params)
-    binding.pry
     if @profile.save
       redirect_to 'show'
     else
@@ -10,6 +13,6 @@ class ProfilesController < ApplicationController
   end
   private
     def profile_params
-      params.require(:profile).permit(:profile_ethnicities_attributes => [:ethnicity])
+      params.require(:profile).permit(:ethnicities_attributes => [:ethnicity])
     end
 end

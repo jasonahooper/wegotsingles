@@ -8,7 +8,7 @@ describe ProfilesController do
       ethnicity2 = Ethnicity.make!(:ethnicity => "African")
       @valid_params = {
           :profile =>
-          { :profile_ethnicities_attributes => [
+          { :ethnicities_attributes => [
             { :ethnicity => ethnicity1 },
             { :ethnicity => ethnicity2 }
             ]
@@ -23,20 +23,21 @@ describe ProfilesController do
   end
   context 'Change ethnicity on Profile' do
     before do
-      @profile = Profile.make!
       ethnicity1 = Ethnicity.make!(:ethnicity => "White")
-      ethnicity2 = Ethnicity.make!(:ethnicity => "African")
+      ethnicity2 = Ethnicity.make!(:ethnicity => "Spanish")
+      @profile = Profile.make!
+      @profile.ethnicities << ethnicity1
       @valid_params =
         { :profile =>
-          { :profile_ethnicities_attributes => [
-            { :ethnicity => ethnicity1 },
+          { :ethnicities_attributes => [
             { :ethnicity => ethnicity2 }
             ]
           }
         }
+      patch :update, @valid_params.merge(:id => @profile.id)
     end
     it 'should store an ethnicity' do
-      post :create, @valid_params
+      assert ProfileEthnicity.count.should eq(1)
     end
   end
 end

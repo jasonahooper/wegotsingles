@@ -4,5 +4,5 @@ class Profile < ActiveRecord::Base
   has_many :profile_ethnicities
   has_many :ethnicities, :through => :profile_ethnicities
 
-  accepts_nested_attributes_for :profile_ethnicities, allow_destroy: true
+  accepts_nested_attributes_for :ethnicities, allow_destroy: true
 end
