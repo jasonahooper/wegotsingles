@@ -1,6 +1,6 @@
 
 Given(/^That a man is on the registration page$/) do
-  visit new_user_registration_path
+  visit account_registration_path("Man")
 end
 
 When(/^he enters "(.*?)" into the "(.*?)"$/) do |input, input_field|
@@ -12,7 +12,7 @@ When(/^he click the "(.*?)" button$/) do |button|
 end
 
 Then(/^it should make a man$/) do
-  expect(User.count).to eq(1)
+  expect(Man.count).to eq(1)
 end
 
 Then(/^he should be taken to the new profile page$/) do
