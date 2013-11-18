@@ -57,4 +57,5 @@ production:
   username: whoever
   password:
 
-
+cucumber:
+  <<: *test
