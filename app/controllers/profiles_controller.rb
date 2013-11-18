@@ -10,6 +10,6 @@ class ProfilesController < ApplicationController
   end
   private
     def profile_params
-      params.require[:profile].permit(:ethnicity)
+      params.require(:profile).permit(:ethnicity, :profile_ethnicities_attributes)
     end
 end

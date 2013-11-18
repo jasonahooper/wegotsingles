@@ -1,5 +1,5 @@
 require 'machinist/active_record'
 
-Profile.blueprint do
+Profile.blueprint {}
 
-end
+Ethnicity.blueprint {}
