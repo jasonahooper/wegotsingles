@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe PagesController do
-  context "GET to show" do
+  context "GET to homepage" do
     before do
-      get :show, :id => '1'
+      get :home
     end
 
     it "should work" do
