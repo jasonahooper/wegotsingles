@@ -1,0 +1,20 @@
+@import 'colours.css.scss';
+@import 'fonts.css.scss';
+
+nav {
+  background: $header_background;
+  padding: 1rem;
+  padding: 1em;
+
+  #main-logo {
+    @include logo-font;
+    font-size: 2rem;
+    font-size: 2em;
+    background: image-url('logo.png') no-repeat;
+    height: 62px;
+    line-height: 62px;
+    padding-left: 82px;
+  }
+
+  border-bottom: 2px solid $grey;
+}

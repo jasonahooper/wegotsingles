@@ -1,0 +1,12 @@
+@import 'colours.css.scss';
+
+@mixin body-gradient {
+  background: $body_background; /* Old browsers */
+  background: -moz-linear-gradient(top,  $body_background 0%, $body_background_shade 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$body_background), color-stop(100%,$body_background_shade)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  $body_background 0%,$body_background_shade 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  $body_background 0%,$body_background_shade 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  $body_background 0%,$body_background_shade 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  $body_background 0%,$body_background_shade 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$body_background', endColorstr='$body_background_shade',GradientType=0 ); /* IE6-9 */
+}

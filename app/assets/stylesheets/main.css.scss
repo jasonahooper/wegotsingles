@@ -1,0 +1,15 @@
+@import 'colours.css.scss';
+@import 'gradients.css.scss';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  @include body-gradient;
+}
+
+#content {
+  padding: 1rem;
+  padding: 1em;
+}
