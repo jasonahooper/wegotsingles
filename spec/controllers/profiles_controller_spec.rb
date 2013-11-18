@@ -8,9 +8,9 @@ describe ProfilesController do
       ethnicity2 = Ethnicity.make!(:ethnicity => "African")
       @valid_params = {
           :profile =>
-          { :ethnicities_attributes => [
-            { :ethnicity => ethnicity1 },
-            { :ethnicity => ethnicity2 }
+          { :profile_ethnicities_attributes => [
+            { :ethnicity_id => ethnicity1.id },
+            { :ethnicity_if => ethnicity2.id }
             ]
           }
         }
@@ -21,16 +21,20 @@ describe ProfilesController do
       assert ProfileEthnicity.count.should eq(2)
     end
   end
+
   context 'Change ethnicity on Profile' do
     before do
+      @profile = Profile.make!
       ethnicity1 = Ethnicity.make!(:ethnicity => "White")
       ethnicity2 = Ethnicity.make!(:ethnicity => "Spanish")
-      @profile = Profile.make!
       @profile.ethnicities << ethnicity1
+      @profile.save!
+      p = @profile.profile_ethnicities.first
       @valid_params =
         { :profile =>
-          { :ethnicities_attributes => [
-            { :ethnicity => ethnicity2 }
+          { :profile_ethnicities_attributes => [
+            { :ethnicity_id => ethnicity2.id },
+            { :id => p.id, :_destroy => '1' }
             ]
           }
         }
