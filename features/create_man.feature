@@ -8,3 +8,8 @@ Feature: create man
     And he click the "Sign up" button
     Then it should make a man
     Then he should be taken to the new profile page
+
+  Scenario: A user resets a forgotten password
+    Given That a user is registered
+    When they click "Forgot your password?"
+    Then an email is sent

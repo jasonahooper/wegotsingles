@@ -16,6 +16,18 @@ Then(/^it should make a man$/) do
 end
 
 Then(/^he should be taken to the new profile page$/) do
-  save_and_open_page
   assert page.find("h1", :text => "We Got Singles")
 end
+
+Given(/^That a user is registered$/) do
+  User.make!
+end
+
+When(/^they click "(.*?)"$/) do |link|
+  click_link(link)
+end
+
+Then(/^an email is sent$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
