@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'thin'
 gem 'haml'
+gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
