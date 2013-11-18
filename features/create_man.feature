@@ -6,4 +6,5 @@ Feature: create man
     And he enters "password" into the "Password"
     And he enters "password" into the "Password confirmation"
     And he click the "Sign up" button
+    Then it should make a man
     Then he should be taken to the new profile page
