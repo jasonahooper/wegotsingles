@@ -2,7 +2,6 @@ class ProfilesController < ApplicationController
   def update
     p = Profile.find(params[:id])
     if p.update_attributes(profile_params)
-      binding.pry
       redirect_to 'show'
     else
       render 'edit'
