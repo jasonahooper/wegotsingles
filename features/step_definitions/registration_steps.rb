@@ -39,3 +39,11 @@ Then(/^the email should contain a confirmation link$/) do
   @outbox.first.body.encoded.should match ("Confirm my account")
 end
 
+When(/^he clicks on the link$/) do
+  visit @outbox.first.body.encoded[121..200]
+end
+
+Then(/^he is taken to the sign in page and notified of his successful confirmation$/) do
+  assert page.find(".flash", "Your account was successfully confirmed")
+end
+

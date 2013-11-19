@@ -20,3 +20,5 @@ Feature: Registration
     And he click the "Sign up" button
     Then an email is sent
     And the email should contain a confirmation link
+    When he clicks on the link
+    Then he is taken to the sign in page and notified of his successful confirmation  
