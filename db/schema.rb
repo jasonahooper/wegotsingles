@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20131119102128) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "profiles", force: true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
@@ -33,9 +36,9 @@ ActiveRecord::Schema.define(version: 20131119102128) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
-    t.string   "first_name"
     t.string   "username"
     t.date     "date_of_birth"
+    t.string   "first_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
