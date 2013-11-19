@@ -34,7 +34,37 @@ describe Profile do
         @profile.height.should eq(188)
       end
     end
-
-
   end
+
+  describe "Weight conversion" do
+    context "with imperial measurments" do
+      before do
+       @profile = Profile.new(:imperial => "true", :imperial_weight => 12.59)
+       @profile.save!
+      end
+
+      it "the user profile should have the weight" do
+        @profile.weight.should_not be_nil
+      end
+
+      it "should convert the imperial to metric" do
+        @profile.weight.should eq(80)
+      end
+    end
+
+    context "with metric measurments" do
+      before do
+        @profile = Profile.make!(:metric_weight => 80)
+      end
+
+      it "the user profile should have the weight" do
+        @profile.weight.should_not be_nil
+      end
+
+      it "should convert the imperial to metric" do
+        @profile.weight.should eq(80)
+      end
+    end
+  end
+
 end

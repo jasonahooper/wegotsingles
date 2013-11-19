@@ -128,7 +128,11 @@ describe ProfilesController do
           @profile.weight.should eq(80)
         end
       end
-    end
 
+
+
+    end
   end
+
+
 end
