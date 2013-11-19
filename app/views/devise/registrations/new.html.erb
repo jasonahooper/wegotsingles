@@ -3,6 +3,12 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+  <div><%= f.label :username %><br />
+  <%= f.text_field :username %></div>
+
+  <div><%= f.label :date_of_birth %><br />
+    <%= f.date_select :date_of_birth, {:start_year => (earliest_year_to_join), :end_year => 1900} %><br />
+
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 
