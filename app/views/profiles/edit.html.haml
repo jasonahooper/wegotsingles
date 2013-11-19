@@ -2,5 +2,8 @@
   = form_for [@profile.user, @profile] do |f|
     %fieldset
       = f.collection_check_boxes :ethnicity_ids, @ethnicities, :id, :ethnicity
+    %fieldset
+      = f.label "Smoking Habits"
+      = f.select(:smoking_habits, ['Never', 'Sometimes', 'Often'])
     %fieldset.button
       = f.submit "Save"

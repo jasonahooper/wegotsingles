@@ -19,6 +19,6 @@ class ProfilesController < ApplicationController
 
   private
     def profile_params
-      params.require(:profile).permit(:ethnicity_ids => [])
+      params.require(:profile).permit(:smoking_habits, :ethnicity_ids => [])
     end
 end
