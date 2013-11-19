@@ -1,7 +1,3 @@
-Given(/^I have a profile$/) do
-  @profile = Profile.make!
-end
-
 Given(/^the following ethnicities exist:$/) do |ethnicity|
   ethnicity.hashes.each do |e|
     Ethnicity.make!(e)
@@ -9,7 +5,7 @@ Given(/^the following ethnicities exist:$/) do |ethnicity|
 end
 
 Given(/^I am on the Edit Profile page for that profile$/) do
-  visit edit_profile_path(@profile)
+  visit edit_user_profile_path(@user, @user.profile)
 end
 
 When(/^I check "(.*?)"$/) do |selection|
@@ -29,6 +25,5 @@ Then(/^I will see "(.*?)" selected$/) do |item|
 end
 
 Given(/^I have a profile with ethnicity "(.*?)"$/) do |ethnicity|
-  step 'I have a profile'
-  @profile.ethnicities << Ethnicity.find_by_ethnicity(ethnicity)
+  @user.profile.ethnicities << Ethnicity.find_by_ethnicity(ethnicity)
 end

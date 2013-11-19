@@ -1,0 +1,2 @@
+class Man < User
+end

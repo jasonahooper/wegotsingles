@@ -3,5 +3,4 @@ class Profile < ActiveRecord::Base
 
   has_many :profile_ethnicities
   has_many :ethnicities, :through => :profile_ethnicities
-
 end
