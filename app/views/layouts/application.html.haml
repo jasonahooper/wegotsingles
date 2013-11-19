@@ -9,7 +9,14 @@
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
 
+
 %body
+  -if flash[:notice]
+    .flash.notice
+      =flash[:notice]
+  -if flash[:alert]
+    .flash.alert
+      =flash[:alert]
   %nav
     %h1#main-logo= "We Got Singles"
 
