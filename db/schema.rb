@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119184116) do
+ActiveRecord::Schema.define(version: 20131119190955) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "ethnicities", force: true do |t|
     t.string   "ethnicity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "languages", force: true do |t|
+    t.string   "language"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -26,14 +35,21 @@ ActiveRecord::Schema.define(version: 20131119184116) do
     t.integer  "ethnicity_id"
   end
 
+  create_table "profile_languages", force: true do |t|
+    t.integer  "profile_id"
+    t.integer  "language_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "profiles", force: true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "occupation"
+    t.integer  "height"
     t.string   "star_sign"
     t.integer  "star_sign_interest_level"
-    t.integer  "height"
   end
 
   create_table "users", force: true do |t|
