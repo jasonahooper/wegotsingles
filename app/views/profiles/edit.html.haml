@@ -12,5 +12,12 @@
       = f.label :imperial_height
       = f.select :imperial_height, @height_imperial_options, { include_blank: true }
       = f.hidden_field :imperial
+    %fieldset
+      = f.label :metric_weight
+      = f.select :metric_weight, @weight_metric_options, { include_blank: true }
+    %fieldset
+      = f.label :imperial_weight
+      = f.select :imperial_weight, @weight_imperial_options, { include_blank: true }
+      = f.hidden_field :imperial_bln_weight
     %fieldset.button
       = f.submit "Save"
