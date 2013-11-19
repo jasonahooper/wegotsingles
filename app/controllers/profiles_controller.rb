@@ -11,7 +11,10 @@ class ProfilesController < ApplicationController
   def edit
     @profile = Profile.find(params[:id])
     @ethnicities = Ethnicity.select(:id, :ethnicity)
+    @user = current_user
+    @height_options = (140..230).to_a
   end
+
 
   def show
     @profile = Profile.find(params[:id])
