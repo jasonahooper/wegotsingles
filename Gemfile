@@ -17,6 +17,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'machinist', '>= 2.0.0.beta2'
   gem 'faker'
+  gem 'selenium-webdriver'
   gem 'pry'
   gem 'pry-byebug'
   gem 'mocha'

@@ -13,6 +13,19 @@
 
 ActiveRecord::Schema.define(version: 20131119105005) do
 
+  create_table "ethnicities", force: true do |t|
+    t.string   "ethnicity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "profile_ethnicities", force: true do |t|
+    t.integer  "profile_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "ethnicity_id"
+  end
+
   create_table "profiles", force: true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
@@ -34,6 +47,9 @@ ActiveRecord::Schema.define(version: 20131119105005) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
+    t.string   "first_name"
+    t.string   "username"
+    t.date     "date_of_birth"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

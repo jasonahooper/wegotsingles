@@ -1,8 +1,12 @@
 require 'machinist/active_record'
 
+Ethnicity.blueprint {}
+
 User.blueprint do
-  email { Faker::Internet.email }
+  first_name { "John" }
+  email { "john.smith@email.com" }
   password { 'password' }
+  profile
 end
 
 Profile.blueprint do
