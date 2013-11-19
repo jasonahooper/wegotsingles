@@ -34,3 +34,4 @@ end
 Then(/^it should make a woman$/) do
   expect(Woman.count).to eq(1)
 end
+

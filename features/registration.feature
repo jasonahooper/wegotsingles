@@ -13,3 +13,4 @@ Feature: Registration
     And she click the "Sign up" button
     Then it should make a woman
     Then she should be taken to the new profile page
+
