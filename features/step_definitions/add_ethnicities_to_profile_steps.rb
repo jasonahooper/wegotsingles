@@ -16,10 +16,6 @@ When(/^he unchecks "(.*?)"$/) do |selection|
   uncheck selection
 end
 
-When(/^I click "(.*?)"$/) do |button|
-  click_button button
-end
-
 Then(/^he will see "(.*?)" selected$/) do |item|
   assert page.find('#profile-ethnicities').has_content?(item)
 end
