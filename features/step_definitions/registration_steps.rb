@@ -12,6 +12,7 @@ When(/^(?:|s)he completes the registration form with valid data$/) do
   step 'he enters "password" into the "Password"'
   step 'he enters "password" into the "Password confirmation"'
   step 'he enters "Smithy87" into the "Username"'
+  step 'he enters "John" into the "First name"'
 end
 
 When(/^(?:|s)he enters "(.*?)" into the "(.*?)"$/) do |input, input_field|

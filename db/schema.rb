@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20131119102128) do
     t.string   "type"
     t.string   "username"
     t.date     "date_of_birth"
+    t.string   "first_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
