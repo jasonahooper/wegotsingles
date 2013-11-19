@@ -13,6 +13,12 @@
 
 ActiveRecord::Schema.define(version: 20131118202718) do
 
+  create_table "profiles", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false

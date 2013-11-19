@@ -5,3 +5,7 @@ User.blueprint do
   email { "john.smith@email.com" }
   password { 'password' }
 end
+
+Profile.blueprint do
+
+end
