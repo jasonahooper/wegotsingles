@@ -1,8 +1,8 @@
 class ProfilesController < ApplicationController
   def update
-    profile = Profile.find(params[:id])
-    if profile.update_attributes(profile_params)
-      redirect_to user_profile_path(profile.user, profile)
+    @profile = Profile.find(params[:id])
+    if @profile.update_attributes(profile_params)
+      redirect_to user_profile_path(@profile.user, @profile)
     else
       render 'edit'
     end
@@ -11,6 +11,9 @@ class ProfilesController < ApplicationController
   def edit
     @profile = Profile.find(params[:id])
     @ethnicities = Ethnicity.select(:id, :ethnicity)
+    @user = current_user
+    @height_metric_options = (100..230).to_a
+    @height_imperial_options = ((2.0)..(7.2)).step(0.1).to_a.map { |a| a.round(1) }
   end
 
   def show
@@ -19,6 +22,6 @@ class ProfilesController < ApplicationController
 
   private
     def profile_params
-      params.require(:profile).permit(:occupation, :ethnicity_ids => [])
+      params.require(:profile).permit(:occupation, :imperial, :height, :metric_height, :imperial_height, :ethnicity_ids => [])
     end
 end

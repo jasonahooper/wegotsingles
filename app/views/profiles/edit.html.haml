@@ -5,5 +5,12 @@
       = f.text_field :occupation
     %fieldset
       = f.collection_check_boxes :ethnicity_ids, @ethnicities, :id, :ethnicity
+    %fieldset
+      = f.label :metric_height
+      = f.select :metric_height, @height_metric_options, { include_blank: true }
+    %fieldset
+      = f.label :imperial_height
+      = f.select :imperial_height, @height_imperial_options, { include_blank: true }
+      = f.hidden_field :imperial
     %fieldset.button
       = f.submit "Save"
