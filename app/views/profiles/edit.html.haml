@@ -1,6 +1,9 @@
 #profile-edit
   = form_for [@profile.user, @profile] do |f|
     %fieldset
+      = f.label :occupation
+      = f.text_field :occupation
+    %fieldset
       = f.collection_check_boxes :ethnicity_ids, @ethnicities, :id, :ethnicity
     %fieldset.button
       = f.submit "Save"
