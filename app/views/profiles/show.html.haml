@@ -9,6 +9,12 @@
         %li
           = ethnicity.ethnicity
 
+  #profile-weight
+    %h3 Weight
+    - if @profile.weight
+      %p="#{@profile.weight} kgs"
+      %p="#{Profile.metric_to_imperial_weight_conversion(@profile.weight)} stone"
+
   #profile-height
     %h3 Height
     - if @profile.height

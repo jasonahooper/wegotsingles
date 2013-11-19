@@ -18,6 +18,6 @@
     %fieldset
       = f.label :imperial_weight
       = f.select :imperial_weight, @weight_imperial_options, { include_blank: true }
-      = f.hidden_field :imperial_bln_weight
+      = f.text_field :imperial_bln_weight
     %fieldset.button
       = f.submit "Save"
