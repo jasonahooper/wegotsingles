@@ -8,5 +8,12 @@
     %fieldset.star_sign
       = f.select(:star_sign, star_signs)
       = f.select(:star_sign_interest_level, options_for_select(levels_of_interest))
+    %fieldset
+      = f.label :metric_height
+      = f.select :metric_height, @height_metric_options, { include_blank: true }
+    %fieldset
+      = f.label :imperial_height
+      = f.select :imperial_height, @height_imperial_options, { include_blank: true }
+      = f.hidden_field :imperial
     %fieldset.button
       = f.submit "Save"

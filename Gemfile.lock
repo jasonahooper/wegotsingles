@@ -109,6 +109,7 @@ GEM
     pry-byebug (1.2.0)
       byebug (~> 2.2)
       pry (~> 0.9.12)
+    quantity (0.1.2)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -198,6 +199,7 @@ DEPENDENCIES
   pg
   pry
   pry-byebug
+  quantity
   rails (= 4.0.0)
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.0)

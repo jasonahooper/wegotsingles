@@ -10,5 +10,9 @@ User.blueprint do
 end
 
 Profile.blueprint do
+  height { 191 }
+end
+
+Profile.blueprint(:imperial) do
 
 end

@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20131119184116) do
     t.string   "occupation"
     t.string   "star_sign"
     t.integer  "star_sign_interest_level"
+    t.integer  "height"
   end
 
   create_table "users", force: true do |t|
