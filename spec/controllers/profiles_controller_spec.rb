@@ -60,7 +60,7 @@ describe ProfilesController do
     context "For height with metric" do
 
       before do
-        @valid_params = { :imperial => false, :height => 190 }
+        @valid_params = { :imperial => "false", :metric_height => 190 }
         patch :update, :id => @user.profile.id, :user_id => @user.id, :profile => @valid_params
       end
 
@@ -78,7 +78,7 @@ describe ProfilesController do
     context "For height with imperial" do
 
       before do
-        @valid_params = { :imperial => true, :height => 6.2 }
+        @valid_params = { :imperial => "true", :imperial_height => 6.2 }
         patch :update, :id => @user.profile.id, :user_id => @user.id, :profile => @valid_params
       end
 

@@ -11,5 +11,6 @@
 
   #profile-height
     %h3 Height
-    %p="#{@profile.height} cms"
-    %p="#{Profile.metric_to_imperial_height_conversion(@profile.height)} ft"
+    - if @profile.height
+      %p="#{@profile.height} cms"
+      %p="#{Profile.metric_to_imperial_height_conversion(@profile.height)} ft"

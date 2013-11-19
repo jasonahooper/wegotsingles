@@ -8,7 +8,8 @@ describe Profile do
   describe "height conversion" do
     context "with imperial measurments" do
       before do
-       @profile = Profile.new({:imperial => true, :height => 6.2})
+       @profile = Profile.new(:imperial => "true", :imperial_height => 6.2)
+       @profile.save!
       end
 
       it "the user profile should have the height" do
@@ -22,7 +23,7 @@ describe Profile do
 
     context "with metric measurments" do
       before do
-        @profile = Profile.make!(:height => 188)
+        @profile = Profile.make!(:metric_height => 188)
       end
 
       it "the user profile should have the height" do

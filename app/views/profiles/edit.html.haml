@@ -8,6 +8,6 @@
     %fieldset
       = f.label :imperial_height
       = f.select :imperial_height, @height_imperial_options, { include_blank: true }
-      = f.text_field :imperial
+      = f.hidden_field :imperial
     %fieldset.button
       = f.submit "Save"
