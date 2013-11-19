@@ -10,7 +10,3 @@ end
 When(/^clicks the "(.*?)" button$/) do |save|
   click_button save
 end
-
-Then(/^he will see "(.*?)"$/) do |text|
-  assert page.find('#content').has_content?(text)
-end
