@@ -8,15 +8,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def create
-    profile = Profile.new(profile_params)
-    if profile.save
-      redirect_to profile_path(profile)
-    else
-      render 'new'
-    end
-  end
-
   def edit
     @profile = Profile.find(params[:id])
     @ethnicities = Ethnicity.select(:id, :ethnicity)
