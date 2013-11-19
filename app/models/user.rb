@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create do 
+    p = Profile.create(:user_id => self.id)
+  end
 end
