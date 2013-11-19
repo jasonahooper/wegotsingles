@@ -7,6 +7,7 @@ Wegotsingles::Application.routes.draw do
   end
 
   resources :users, :only => [:show] do
-    resources :profiles, :only => [:show]
+    resources :profiles, :only => [:show, :update, :edit]
   end
+
 end

@@ -1,3 +1,10 @@
 %h1
   Personal Profile
-= @profile.id
+
+#profile-show
+  #profile-ethnicities
+    %h3 Ethnicity
+    %ul
+      -@profile.ethnicities.each do |ethnicity|
+        %li
+          = ethnicity.ethnicity

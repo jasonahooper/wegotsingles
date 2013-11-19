@@ -1,1 +1,1 @@
-require_relative "../../spec/support/blueprints"
+require_relative '../../spec/support/blueprints'
