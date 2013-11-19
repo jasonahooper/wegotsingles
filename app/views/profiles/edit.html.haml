@@ -1,0 +1,6 @@
+#profile-edit
+  = form_for @profile do |f|
+    %fieldset
+      = f.collection_check_boxes :ethnicity_ids, @ethnicities, :id, :ethnicity
+    %fieldset.button
+      = f.submit "Save"

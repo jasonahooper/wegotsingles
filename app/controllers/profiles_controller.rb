@@ -1,23 +1,33 @@
 class ProfilesController < ApplicationController
   def update
-    p = Profile.find(params[:id])
-    if p.update_attributes(profile_params)
-      redirect_to 'show'
+    profile = Profile.find(params[:id])
+    if profile.update_attributes(profile_params)
+      redirect_to profile_path(profile)
     else
       render 'edit'
     end
   end
 
   def create
-    @profile = Profile.new(profile_params)
-    if @profile.save
-      redirect_to 'show'
+    profile = Profile.new(profile_params)
+    if profile.save
+      redirect_to profile_path(profile)
     else
       render 'new'
     end
   end
+
+  def edit
+    @profile = Profile.find(params[:id])
+    @ethnicities = Ethnicity.select(:id, :ethnicity)
+  end
+
+  def show
+    @profile = Profile.find(params[:id])
+  end
+
   private
     def profile_params
-      params.require(:profile).permit(:profile_ethnicities_attributes => [:ethnicity_id, :_destroy, :id])
+      params.require(:profile).permit(:ethnicity_ids => [])
     end
 end
