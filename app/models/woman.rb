@@ -1,0 +1,2 @@
+class Woman < User
+end
