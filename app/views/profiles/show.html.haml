@@ -8,3 +8,8 @@
       -@profile.ethnicities.each do |ethnicity|
         %li
           = ethnicity.ethnicity
+
+  #profile-height
+    %h3 Height
+    %p="#{@profile.height} cms"
+    %p="#{Profile.metric_to_imperial_height_conversion(@profile.height)} ft"

@@ -12,9 +12,9 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     @ethnicities = Ethnicity.select(:id, :ethnicity)
     @user = current_user
-    @height_options = (140..230).to_a
+    @height_metric_options = (100..230).to_a
+    @height_imperial_options = ((2.0)..(7.2)).step(0.1).to_a.map { |a| a.round(1) }
   end
-
 
   def show
     @profile = Profile.find(params[:id])
@@ -22,6 +22,6 @@ class ProfilesController < ApplicationController
 
   private
     def profile_params
-      params.require(:profile).permit(:imperial, :height, :ethnicity_ids => [])
+      params.require(:profile).permit(:imperial, :height, :metric_height, :imperial_height, :ethnicity_ids => [])
     end
 end
