@@ -36,7 +36,6 @@ describe ProfilesController do
       ProfileEthnicity.count.should eq(1)
       ProfileEthnicity.first.ethnicity_id.should
         eq(Ethnicity.find_by_ethnicity("Spanish").id)
-      binding.pry
     end
   end
 end
