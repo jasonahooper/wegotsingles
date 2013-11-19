@@ -26,3 +26,13 @@
 
   #profile-starsign
     %h3 Star-sign: #{@profile.star_sign}, and I'm #{level_of_interest(@profile.star_sign_interest_level)}
+
+  #profile-languages
+    %h3 Languages
+    %ul
+      -@profile.languages.each do |language|
+        %li
+          = language.language
+
+.actions
+  = link_to 'Edit', edit_user_profile_path(@profile.user, @profile)

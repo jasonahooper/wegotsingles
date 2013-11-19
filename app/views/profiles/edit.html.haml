@@ -18,5 +18,7 @@
       = f.label :imperial_height
       = f.select :imperial_height, @height_imperial_options, { include_blank: true }
       = f.hidden_field :imperial
+    %fieldset
+      = f.collection_check_boxes :language_ids, @languages, :id, :language
     %fieldset.button
       = f.submit "Save"
