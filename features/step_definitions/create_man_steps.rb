@@ -20,7 +20,11 @@ Then(/^he should be taken to the new profile page$/) do
 end
 
 Given(/^That a user is registered$/) do
-  User.make!
+  @user = User.make!
+end
+
+Given(/^they are on the sign\-in page$/) do
+  visit new_user_session_path
 end
 
 When(/^they click "(.*?)"$/) do |link|
@@ -28,6 +32,14 @@ When(/^they click "(.*?)"$/) do |link|
 end
 
 Then(/^an email is sent$/) do
-  pending # express the regexp above with the code you wish you had
+  @outbox = ActionMailer::Base.deliveries
+  @outbox.length.should eq(1)
 end
 
+Then(/^it is addressed to the user$/) do
+  @outbox.first.to.should include(@user.email)
+end
+
+Then(/^it contains the users first name$/) do
+  @outbox.first.body.encoded.should match (@user.first_name)  
+end
