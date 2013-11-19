@@ -2,7 +2,12 @@ Wegotsingles::Application.routes.draw do
   root 'pages#home'
 
   resources :users, :only => [:show] do
-    resources :profiles, :only => [:show]
+
+    member do
+      get :profile
+    end
+
+    resources :profiles, :only => [:edit, :update, :show]
   end
 
   devise_for :users, :controllers => {:registrations => "registrations", }

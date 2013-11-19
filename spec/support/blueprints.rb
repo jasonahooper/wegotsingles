@@ -10,5 +10,5 @@ Profile.blueprint do
 end
 
 Profile.blueprint(:imperial) do
-  imperial { true }
+
 end

@@ -9,7 +9,6 @@ describe ProfilesController do
   end
 
   context "GET to show" do
-
     before do
       get :show, :id => @user.profile.id, :user_id => @user.id
     end
@@ -17,41 +16,45 @@ describe ProfilesController do
     it "should work" do
       expect(response).to be_success
     end
-
   end
 
-  context "GET to create for height with metric" do
+  context "Patch to update" do
+    context "For height with metric" do
 
-    before do
-      @user.profile.height = 190
-      @user.save!
+      before do
+        @valid_params = { :imperial => false, :height => 190 }
+        patch :update, :id => @user.profile.id, :user_id => @user.id, :profiles => @valid_params
+      end
+
+      it "the user profile should have the height" do
+        @profile.reload
+        @profile.height.should_not be_nil
+      end
+
+      it "should have the metric measurement" do
+        @profile.reload
+        @profile.height.should eq(190)
+      end
     end
 
-    it "the user profile should have the height" do
-      @user.profile.height.should_not be_nil
-    end
+    context "For height with imperial" do
 
-    it "should have the metric measurement" do
-      @user.profile.height.should eq(190)
-    end
+      before do
+        @valid_params = { :imperial => true, :height => 6.2 }
+        patch :update, :id => @user.profile.id, :user_id => @user.id, :profiles => @valid_params
+      end
 
+      it "the user profile should have the height" do
+        @profile.reload
+        @profile.height.should_not be_nil
+      end
+
+      it "should have the metric measurement" do
+        @profile.reload
+        @profile.height.should eq(188)
+      end
+    end
   end
 
-  context "GET to create for height with imperial" do
 
-    before do
-      @user.profile.imperial = true
-      @user.profile.height = 6.2
-      @user.save!
-    end
-
-    it "the user profile should have the height" do
-      @user.profile.height.should_not be_nil
-    end
-
-    it "should have the metric measurement" do
-      @user.profile.height.should eq(188)
-    end
-
-  end
 end

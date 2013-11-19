@@ -31,5 +31,7 @@ describe Profile do
         @profile.height.should eq(188)
       end
     end
+
+
   end
 end

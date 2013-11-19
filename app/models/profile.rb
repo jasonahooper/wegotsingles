@@ -8,7 +8,7 @@ class Profile < ActiveRecord::Base
   end
 
   def self.imperial_to_metric_height_conversion(height)
-    metric = height.feet.to_centimeter.to_i
+    metric = height.to_f.feet.to_centimeter.to_i
   end
 
   def height=(height)
