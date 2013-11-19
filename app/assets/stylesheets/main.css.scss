@@ -1,4 +1,5 @@
 @import 'colours.css.scss';
+@import 'fonts.css.scss';
 @import 'gradients.css.scss';
 
 html, body {
@@ -7,9 +8,14 @@ html, body {
 
 body {
   @include body-gradient;
+  @include main-font;
 }
 
 #content {
   padding: 1rem;
   padding: 1em;
+}
+
+.clear {
+  clear: both;
 }
