@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119151948) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20131119184116) do
 
   create_table "ethnicities", force: true do |t|
     t.string   "ethnicity"
@@ -34,6 +31,8 @@ ActiveRecord::Schema.define(version: 20131119151948) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "occupation"
+    t.string   "star_sign"
+    t.integer  "star_sign_interest_level"
   end
 
   create_table "users", force: true do |t|

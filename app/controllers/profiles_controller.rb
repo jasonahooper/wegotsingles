@@ -19,6 +19,6 @@ class ProfilesController < ApplicationController
 
   private
     def profile_params
-      params.require(:profile).permit(:occupation, :ethnicity_ids => [])
+      params.require(:profile).permit(:star_sign, :star_sign_interest_level, :occupation, :ethnicity_ids => [])
     end
 end
