@@ -3,4 +3,6 @@ class Profile < ActiveRecord::Base
 
   has_many :profile_ethnicities
   has_many :ethnicities, :through => :profile_ethnicities
+  has_many :profile_languages
+  has_many :languages, :through => :profile_languages
 end

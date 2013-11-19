@@ -1,6 +1,12 @@
 require 'machinist/active_record'
 
-Ethnicity.blueprint {}
+Ethnicity.blueprint do
+
+end
+
+Language.blueprint do
+
+end
 
 User.blueprint do
   first_name { "John" }
