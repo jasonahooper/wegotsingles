@@ -16,6 +16,5 @@ Then(/^it should make a man$/) do
 end
 
 Then(/^he should be taken to the new profile page$/) do
-  save_and_open_page
   assert page.find("h1", :text => "We Got Singles")
 end
