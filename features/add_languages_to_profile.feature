@@ -9,17 +9,17 @@ Feature: add languages to profile
     And That a user is registered
 
   Scenario: a user adds language(s) to their profile
-  Given he is on the Edit Profile page for his profile
-  When he checks "English"
-  And he checks "French"
-  And he click the "Save" button
-  Then he will see "English" selected
-  And he will see "French" selected
+    Given he is on the Edit Profile page for his profile
+    When he checks "English"
+    And he checks "French"
+    And he click the "Save" button
+    Then he will see "English" selected
+    And he will see "French" selected
 
   Scenario: a user changes languages on their profile
-  Given he has a profile with language "Spanish"
-  And he is on the Edit Profile page for his profile
-  When he checks "English"
-  And he unchecks "Spanish"
-  And he click the "Save" button
-  Then he will see "English" selected
+    Given he has a profile with language "Spanish"
+    And he is on the Edit Profile page for his profile
+    When he checks "English"
+    And he unchecks "Spanish"
+    And he click the "Save" button
+    Then he will see "English" selected

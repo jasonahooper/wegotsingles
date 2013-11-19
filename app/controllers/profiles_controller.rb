@@ -11,6 +11,7 @@ class ProfilesController < ApplicationController
   def edit
     @profile = Profile.find(params[:id])
     @ethnicities = Ethnicity.select(:id, :ethnicity)
+    @languages = Language.select(:id, :language)
   end
 
   def show
@@ -19,6 +20,7 @@ class ProfilesController < ApplicationController
 
   private
     def profile_params
-      params.require(:profile).permit(:occupation, :ethnicity_ids => [])
+      params.require(:profile).permit(:occupation, :ethnicity_ids => [],
+        :language_ids => [])
     end
 end

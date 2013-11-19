@@ -10,3 +10,9 @@
           = ethnicity.ethnicity
   #profile-occupation
     %h3 Occupation: #{@profile.occupation}
+  #profile-languages
+    %h3 Languages
+    %ul
+      -@profile.languages.each do |language|
+        %li
+          = language.language

@@ -5,5 +5,7 @@
       = f.text_field :occupation
     %fieldset
       = f.collection_check_boxes :ethnicity_ids, @ethnicities, :id, :ethnicity
+    %fieldset
+      = f.collection_check_boxes :language_ids, @languages, :id, :language
     %fieldset.button
       = f.submit "Save"
