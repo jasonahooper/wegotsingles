@@ -34,6 +34,10 @@ ActiveRecord::Schema.define(version: 20131119192009) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "smoking_habits"
+    t.integer  "height"
+    t.string   "occupation"
+    t.string   "star_sign"
+    t.integer  "star_sign_interest_level"
   end
 
   create_table "users", force: true do |t|
