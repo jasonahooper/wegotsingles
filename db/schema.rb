@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20131119143917) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "profiles", force: true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
@@ -36,9 +33,9 @@ ActiveRecord::Schema.define(version: 20131119143917) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
+    t.string   "first_name"
     t.string   "username"
     t.date     "date_of_birth"
-    t.string   "first_name"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
