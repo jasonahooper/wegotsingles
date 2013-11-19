@@ -17,7 +17,6 @@ describe ProfilesController do
       patch :update, @valid_params.merge(:id => @profile.id)
     end
     it 'should store ethnicities' do
-      Profile.count.should eq(1)
       ProfileEthnicity.count.should eq(2)
     end
   end
