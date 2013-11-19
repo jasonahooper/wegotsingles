@@ -20,7 +20,7 @@ describe ProfilesController do
 
   end
 
-  context "GET to create for height" do
+  context "GET to create for height with metric" do
 
     before do
       @user.profile.height = 190
@@ -31,8 +31,27 @@ describe ProfilesController do
       @user.profile.height.should_not be_nil
     end
 
-    it "the user profile height should be displayed in both metrics" do
-
+    it "should have the metric measurement" do
+      @user.profile.height.should eq(190)
     end
+
+  end
+
+  context "GET to create for height with imperial" do
+
+    before do
+      @user.profile.imperial = true
+      @user.profile.height = 6.2
+      @user.save!
+    end
+
+    it "the user profile should have the height" do
+      @user.profile.height.should_not be_nil
+    end
+
+    it "should have the metric measurement" do
+      @user.profile.height.should eq(188)
+    end
+
   end
 end
