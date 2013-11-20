@@ -23,6 +23,11 @@ Profile.blueprint(:without_height) do
   height { nil }
 end
 
+Profile.blueprint(:without_weight) do
+  height { nil }
+end
+
+
 Profile.blueprint(:imperial) do
 
 end

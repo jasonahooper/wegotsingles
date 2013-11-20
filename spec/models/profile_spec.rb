@@ -59,7 +59,8 @@ describe Profile do
 
     context "Weight with metric measurments" do
       before do
-        @profile = Profile.new(:imperial_bln_weight => "false", :metric_weight => 80)
+        @profile = Profile.make(:without_weight)
+        @profile.metric_weight = 80
         @profile.save!
       end
 
