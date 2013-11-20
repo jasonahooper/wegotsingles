@@ -5,8 +5,8 @@
       = f.text_field :occupation
     %fieldset
       = f.collection_check_boxes :ethnicity_ids, @ethnicities, :id, :ethnicity
-    %fieldset
-      = f.label "Smoking Habits"
+    %fieldset.smoking_habits
+      = f.label :smoking_habits
       = f.select(:smoking_habits, ['Never', 'Sometimes', 'Often'])
     %fieldset.star_sign
       = f.select(:star_sign, star_signs)
