@@ -4,6 +4,7 @@ class Profile < ActiveRecord::Base
   has_many :ethnicities, :through => :profile_ethnicities
   has_many :profile_languages
   has_many :languages, :through => :profile_languages
+  has_many :images
 
   attr_accessor :imperial, :metric_height, :imperial_height
 
