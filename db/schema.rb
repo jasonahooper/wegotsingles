@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20131119204257) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "ethnicities", force: true do |t|
     t.string   "ethnicity"
     t.datetime "created_at"
@@ -43,13 +46,13 @@ ActiveRecord::Schema.define(version: 20131119204257) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "smoking_habits"
+    t.integer  "height"
     t.string   "occupation"
     t.string   "star_sign"
     t.integer  "star_sign_interest_level"
-    t.integer  "height"
     t.string   "drink_frequency"
     t.string   "favourite_tipple"
-    t.string   "smoking_habits"
   end
 
   create_table "users", force: true do |t|
