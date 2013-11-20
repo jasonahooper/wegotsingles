@@ -5,6 +5,9 @@
       = f.text_field :occupation
     %fieldset
       = f.collection_check_boxes :ethnicity_ids, @ethnicities, :id, :ethnicity
+    %fieldset
+      = f.label "Smoking Habits"
+      = f.select(:smoking_habits, ['Never', 'Sometimes', 'Often'])
     %fieldset.star_sign
       = f.select(:star_sign, star_signs)
       = f.select(:star_sign_interest_level, options_for_select(levels_of_interest))
@@ -19,5 +22,7 @@
       = f.label :imperial_height
       = f.select :imperial_height, @height_imperial_options, { include_blank: true }
       = f.hidden_field :imperial
+    %fieldset
+      = f.collection_check_boxes :language_ids, @languages, :id, :language
     %fieldset.button
       = f.submit "Save"

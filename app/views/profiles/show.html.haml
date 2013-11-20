@@ -2,6 +2,12 @@
   Personal Profile
 
 #profile-show
+
+  #profile-smoking_habits
+    %h3
+      Smoking Habits: 
+      =@profile.smoking_habits
+
   #profile-ethnicities
     %h3 Ethnicity
     %ul
@@ -23,3 +29,13 @@
 
   #profile-drinkfrequency
     %h3 Likes to drink #{@profile.favourite_tipple+' '}#{@profile.drink_frequency}  
+
+  #profile-languages
+    %h3 Languages
+    %ul
+      -@profile.languages.each do |language|
+        %li
+          = language.language
+
+.actions
+  = link_to 'Edit', edit_user_profile_path(@profile.user, @profile)
