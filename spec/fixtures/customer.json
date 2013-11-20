@@ -1,0 +1,42 @@
+{     "object": "customer",
+      "created": 1384968592,
+      "id": "cus_2yc1BvwsPNa1Dn",
+      "livemode": false,
+      "description": null,
+      "email": "louis@redapesolutions.com",
+      "delinquent": false,
+      "metadata": {
+      },
+      "subscription": null,
+      "discount": null,
+      "account_balance": 0,
+      "cards": {
+        "object": "list",
+        "count": 1,
+        "url": "/v1/customers/cus_2yc1BvwsPNa1Dn/cards",
+        "data": [
+          {
+            "id": "card_2yc15R6O1tnRZx",
+            "object": "card",
+            "last4": "4242",
+            "type": "Visa",
+            "exp_month": 11,
+            "exp_year": 2015,
+            "fingerprint": "qhjxpr7DiCdFYTlH",
+            "customer": "cus_2yc1BvwsPNa1Dn",
+            "country": "US",
+            "name": "louis@redapesolutions.com",
+            "address_line1": null,
+            "address_line2": null,
+            "address_city": null,
+            "address_state": null,
+            "address_zip": null,
+            "address_country": null,
+            "cvc_check": "pass",
+            "address_line1_check": null,
+            "address_zip_check": null
+          }
+        ]
+      },
+      "default_card": "card_2yc15R6O1tnRZx"
+    }

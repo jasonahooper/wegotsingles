@@ -16,4 +16,5 @@ Wegotsingles::Application.routes.draw do
   end
 
   resources :payments, :only => [:create, :new]
+  get "payments/welcome"
 end
