@@ -1,5 +1,4 @@
 When(/^he selects the image file "(.*?)"$/) do |file|
-  save_and_open_page
   attach_file('Image', 'spec/fixtures/' + file)
 end
 

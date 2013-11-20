@@ -1,6 +1,5 @@
 class ProfilesController < ApplicationController
   def update
-    binding.pry
     @profile = Profile.find(params[:id])
     if @profile.update_attributes(profile_params)
       redirect_to user_profile_path(@profile.user, @profile)
