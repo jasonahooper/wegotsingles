@@ -8,45 +8,6 @@ describe ProfilesController do
     @user.profile = @profile
   end
 
-  describe 'Religion feature' do
-    before do
-      @religion = 1
-    end
-
-    context 'Add religion on Profile' do
-      before do
-        @valid_params = { :profile => { :religion => @religion } }
-
-        patch :update, @valid_params.merge(:id => @profile.id, :user_id => @user.id)
-      end
-
-      it "should store religion" do
-        @profile.reload
-        @profile.religion.should_not be_nil
-      end
-
-      it "should store religion" do
-        @profile.reload
-        @profile.religion.should eq(@religion)
-      end
-    end
-
-    context 'Update religion on Profile' do
-      before do
-        @religion2 = 2
-        @profile.religion = @religion
-        @profile.save!
-        @valid_params = { :profile => { :religion => @religion2 } }
-      end
-
-      it "should have the new education" do
-        @profile.reload
-        @profile.education.should eq(@education2)
-        @profile.education.should_not eq(@education)
-      end
-    end
-  end
-
   describe 'Education feature' do
     before do
       @education = 1

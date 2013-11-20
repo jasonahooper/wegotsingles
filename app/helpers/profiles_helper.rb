@@ -8,6 +8,10 @@ module ProfilesHelper
     ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces']
   end
 
+  def religions
+    ['Agnosticism', 'Atheism', 'Christianity', 'Judaism', 'Hinuism', 'Buddism', 'Islam', 'Other']
+  end
+
   def levels_of_interest
     [['Not interested', 1 ], ['Interested', 2 ], ['Very interested', 3 ]]
   end

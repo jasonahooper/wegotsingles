@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120143823) do
+ActiveRecord::Schema.define(version: 20131120203416) do
 
   create_table "ethnicities", force: true do |t|
     t.string   "ethnicity"
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 20131120143823) do
     t.text     "about_you"
     t.text     "likes_and_dislikes"
     t.text     "looking_for"
+    t.string   "religion"
+    t.integer  "religion_interest_level"
   end
 
   create_table "users", force: true do |t|

@@ -41,6 +41,9 @@
   #profile-starsign
     %h3 Star-sign: #{@profile.star_sign}, and I'm #{level_of_interest(@profile.star_sign_interest_level)}
 
+  #profile-religion
+    %h3 Religion: #{@profile.religion}, and I'm #{level_of_interest(@profile.religion_interest_level)}
+
   #profile-drinkfrequency
     %h3 Drinks #{@profile.drink_frequency}
     - if @profile.favourite_tipple
