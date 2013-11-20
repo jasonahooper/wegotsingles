@@ -180,7 +180,7 @@ describe ProfilesController do
     #   end
     end
 
-    context 'Remove an image' do
+    context 'Remove the only image' do
       before do
         @profile.images << Image.make!(:image => "first.jpg")
         image_id = @profile.images.first.id
