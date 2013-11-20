@@ -5,6 +5,7 @@ class Profile < ActiveRecord::Base
   has_many :profile_languages
   has_many :languages, :through => :profile_languages
   has_many :images
+  accepts_nested_attributes_for :images
 
   attr_accessor :imperial, :metric_height, :imperial_height
 

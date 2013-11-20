@@ -132,4 +132,25 @@ describe ProfilesController do
     end
   end
 
+  # describe 'Image upload feature' do
+  #   before do
+  #     @test_file = 'gary.jpg'
+  #     file = fixture_file_upload("/" + @test_file,'application/jpg')
+  #     post :create, { :track =>
+  #       { :title => 'test title', :artist => 'test artist', :image => file,
+  #           :song => song }
+  #     }
+  #   end
+  #   it 'should save the image to a directory' do
+  #     new_path = "public/uploads/track/image/#{assigns(:track).id}"
+  #     new_file = "#{new_path}/#{@test_file}"
+  #     File::exists?(new_file).should be(true)
+  #   end
+  #   it 'should save the thumbnail image to a directory' do
+  #     new_path = "public/uploads/track/image/#{assigns(:track).id}"
+  #     new_file = "#{new_path}/thumb_#{@test_file}"
+  #     File::exists?(new_file).should be(true)
+  #   end
+
+  end
 end

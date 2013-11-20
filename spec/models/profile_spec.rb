@@ -7,6 +7,7 @@ describe Profile do
   it { should have_many(:profile_languages) }
   it { should have_many(:languages).through(:profile_languages)}
   it { should have_many(:images) }
+  it { should accept_nested_attributes_for(:images) }
 
   describe "height conversion" do
     context "with imperial measurments" do
