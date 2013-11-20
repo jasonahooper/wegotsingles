@@ -11,5 +11,10 @@ require 'spec_helper'
 #   end
 # end
 describe ProfilesHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should assocaite 2 with interested" do
+    helper.level_of_interest(2).should eq("interested")
+  end
+  it "should assocaite 3 with very interested" do
+    helper.level_of_interest(3).should eq("very interested")
+  end
 end

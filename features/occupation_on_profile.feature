@@ -5,4 +5,5 @@ Feature: a user specifies their occupation on the profile
     And he is on the Edit Profile page for his profile
     When he enters "Developer" into the "Occupation"
     And he click the "Save" button
-    Then he will see "Occupation: Developer"
+    Then he will see "Developer"
+    And he will see "Occupation"

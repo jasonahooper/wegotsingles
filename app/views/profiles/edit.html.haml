@@ -5,12 +5,19 @@
       = f.text_field :occupation
     %fieldset
       = f.collection_check_boxes :ethnicity_ids, @ethnicities, :id, :ethnicity
-    %fieldset
-      = f.label "Smoking Habits"
+    %fieldset.smoking_habits
+      = f.label :smoking_habits
       = f.select(:smoking_habits, ['Never', 'Sometimes', 'Often'])
     %fieldset.star_sign
       = f.select(:star_sign, star_signs)
-      = f.select(:star_sign_interest_level, options_for_select(levels_of_interest))
+      = f.select(:star_sign_interest_level, options_for_select(levels_of_interest,  selected = @profile.star_sign_interest_level))
+    %fieldset.drinking_frequency
+      = f.select(:drink_frequency, drink_frequencies)
+      = f.label :favourite_tipple
+      = f.text_field(:favourite_tipple)
+    %fieldset
+      = f.label :education
+      = f.select :education, @education_options, { include_blank: true }
     %fieldset
       = f.label :metric_height
       = f.select :metric_height, @height_metric_options, { include_blank: true }
@@ -18,6 +25,13 @@
       = f.label :imperial_height
       = f.select :imperial_height, @height_imperial_options, { include_blank: true }
       = f.hidden_field :imperial
+    %fieldset
+      = f.label :metric_weight
+      = f.select :metric_weight, @weight_metric_options, { include_blank: true }
+    %fieldset
+      = f.label :imperial_weight
+      = f.select :imperial_weight, @weight_imperial_options, { include_blank: true }
+      = f.hidden_field :imperial_bln_weight
     %fieldset
       = f.collection_check_boxes :language_ids, @languages, :id, :language
     %fieldset
@@ -29,5 +43,17 @@
             = image_tag show.image.thumb.url
           / .thumbnail-check
       /       = f.checkbox :delete
+    %fieldset
+      = f.label :about_you
+      = f.text_area :about_you, :class => "tinymce", :rows => 5, :cols => 5
+      = tinymce
+    %fieldset
+      = f.label :likes_and_dislikes
+      = f.text_area :likes_and_dislikes, :class => "tinymce", :rows => 5, :cols => 5
+      = tinymce
+    %fieldset
+      = f.label :looking_for
+      = f.text_area :looking_for, :class => "tinymce", :rows => 5, :cols => 5
+      = tinymce
     %fieldset.button
       = f.submit "Save"

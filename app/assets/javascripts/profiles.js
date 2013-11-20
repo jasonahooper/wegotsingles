@@ -2,12 +2,19 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function(){
-  console.log("hi");
   $("#profile_imperial_height").change(function(e){
     if($("#profile_imperial_height").val() !== ""){
       $("#profile_imperial").val("true");
     }else{
       $("#profile_imperial").val("");
+    }
+  });
+
+  $("#profile_imperial_weight").change(function(e){
+    if($("#profile_imperial_weight").val() !== ""){
+      $("#profile_imperial_bln_weight").val("true");
+    }else{
+      $("#profile_imperial_bln_weight").val("");
     }
   });
 });

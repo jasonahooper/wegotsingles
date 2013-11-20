@@ -1,0 +1,6 @@
+default:
+  theme_advanced_toolbar_align: left
+  theme_advanced_buttons3_add:
+    - tablecontrols
+  plugins:
+    - table
