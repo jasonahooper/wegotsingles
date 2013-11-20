@@ -8,10 +8,31 @@
     %title= "We Got Singles"
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
+
     = javascript_include_tag "application"
 %body
+  -if flash[:notice]
+    .flash.notice
+      =flash[:notice]
+  -if flash[:alert]
+    .flash.alert
+      =flash[:alert]
   %nav
     %h1#main-logo= "We Got Singles"
+
+    .nav-links
+      %ol
+        %li
+          = link_to 'Sign In', new_user_session_path
+        %li
+          = link_to 'Sign Up Guys!', account_registration_path("Man")
+        %li
+          = link_to 'Sign Up Girls!', account_registration_path("Woman")
+        - if user_signed_in?
+          %li
+            = link_to 'My Profile', user_profile_path(current_user, current_user.profile)
+
+    .clear
 
   #content
     = yield

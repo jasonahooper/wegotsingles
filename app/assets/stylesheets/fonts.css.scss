@@ -1,3 +1,7 @@
+@mixin main-font() {
+  font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
+}
+
 @mixin logo_font() {
   font-family: code_boldregular;
   font-weight: normal;

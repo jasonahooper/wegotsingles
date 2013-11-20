@@ -16,6 +16,7 @@ class ProfilesController < ApplicationController
     @height_imperial_options = ((2.0)..(7.2)).step(0.1).to_a.map { |a| a.round(1) }
     @weight_metric_options = (30..250).to_a
     @weight_imperial_options = ((2.0)..(25.5)).step(0.1).to_a.map { |a| a.round(1) }
+    @languages = Language.select(:id, :language)
   end
 
   def show
@@ -23,7 +24,8 @@ class ProfilesController < ApplicationController
   end
 
   private
-    def profile_params
-      params.require(:profile).permit(:occupation, :imperial, :height, :metric_height, :imperial_height, :imperial_bln_weight, :weight, :metric_weight, :imperial_weight, :ethnicity_ids => [])
-    end
+  def profile_params
+    params.require(:profile).permit(:smoking_habits, :star_sign, :star_sign_interest_level,
+     :occupation, :imperial, :height, :metric_height, :imperial_height, :imperial_bln_weight, :weight, :metric_weight, :imperial_weight, :ethnicity_ids => [], :language_ids => [])
+  end
 end

@@ -19,11 +19,24 @@ ActiveRecord::Schema.define(version: 20131119194332) do
     t.datetime "updated_at"
   end
 
+  create_table "languages", force: true do |t|
+    t.string   "language"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "profile_ethnicities", force: true do |t|
     t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "ethnicity_id"
+  end
+
+  create_table "profile_languages", force: true do |t|
+    t.integer  "profile_id"
+    t.integer  "language_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "profiles", force: true do |t|
@@ -33,6 +46,9 @@ ActiveRecord::Schema.define(version: 20131119194332) do
     t.integer  "height"
     t.string   "occupation"
     t.integer  "weight"
+    t.string   "star_sign"
+    t.integer  "star_sign_interest_level"
+    t.string   "smoking_habits"
   end
 
   create_table "users", force: true do |t|

@@ -2,6 +2,8 @@ class Profile < ActiveRecord::Base
   belongs_to :user
   has_many :profile_ethnicities
   has_many :ethnicities, :through => :profile_ethnicities
+  has_many :profile_languages
+  has_many :languages, :through => :profile_languages
 
   attr_accessor :imperial, :imperial_bln_weight, :metric_height, :imperial_height, :imperial_weight, :metric_weight
 

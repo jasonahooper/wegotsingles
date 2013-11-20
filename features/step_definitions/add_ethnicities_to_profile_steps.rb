@@ -17,7 +17,7 @@ When(/^he unchecks "(.*?)"$/) do |selection|
 end
 
 Then(/^he will see "(.*?)" selected$/) do |item|
-  assert page.find('#profile-ethnicities').has_content?(item)
+  assert page.find('#content').has_content?(item)
 end
 
 Given(/^he has a profile with ethnicity "(.*?)"$/) do |ethnicity|
