@@ -169,6 +169,7 @@ describe ProfilesController do
         @profile.height.should eq(188)
       end
     end
+  end
 
   describe 'Image upload feature' do
 
@@ -268,6 +269,9 @@ describe ProfilesController do
       end
       it 'should have one profile image' do
         assigns(:profile).images.count.should eq(1)
+      end
+    end
+  end
 
     context "For weight feature" do
       context "For weight with metric" do
@@ -306,5 +310,5 @@ describe ProfilesController do
         end
       end
     end
-  end
+
 end
