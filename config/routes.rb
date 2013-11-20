@@ -14,4 +14,7 @@ Wegotsingles::Application.routes.draw do
 
     resources :profiles, :only => [:show, :update, :edit]
   end
+
+  resources :payments, :only => [:create, :new]
+  get "payments/welcome"
 end

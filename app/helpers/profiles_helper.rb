@@ -1,5 +1,17 @@
 module ProfilesHelper
 
+  def imperial_height_show(profile)
+    h = BigDecimal.new(profile.imperial_height, 3)
+    feet, inches = h.fix.to_i, (h.frac*10).to_i
+    return [feet, inches]
+  end
+
+  def imperial_weight_show(profile)
+    w = BigDecimal.new(profile.imperial_weight, 3)
+    stones, pounds = w.fix.to_i, (w.frac*10).to_i
+    return [stones, pounds]
+  end
+
   def retreive_education(education)
     Profile.education_options.rassoc(education).first
   end
@@ -30,4 +42,7 @@ module ProfilesHelper
       "very interested"
     end
   end
+
+
+
 end

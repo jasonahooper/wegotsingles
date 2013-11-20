@@ -23,13 +23,13 @@
     %h3 Weight
     - if @profile.weight
       %p="#{@profile.weight} kgs"
-      %p="#{@profile.imperial_weight_show.first} st #{@profile.imperial_weight_show.last} pounds"
+      %p="#{imperial_weight_show(@profile).first} st #{imperial_weight_show(@profile).last} pounds"
 
   #profile-height
     %h3 Height
     - if @profile.height
       %p="#{@profile.height} cms"
-      %p="#{@profile.imperial_height_show.first} ft #{@profile.imperial_height_show.last} inches"
+      %p="#{imperial_height_show(@profile).first} ft #{imperial_height_show(@profile).last} inches"
 
   #profile-education
     - if @profile.education

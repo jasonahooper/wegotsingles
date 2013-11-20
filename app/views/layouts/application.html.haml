@@ -29,6 +29,9 @@
         %li
           = link_to 'Sign Up Girls!', account_registration_path("Woman")
         - if user_signed_in?
+          -if current_user.type == 'Man'
+            %li 
+              = link_to 'Premium Membership', new_payment_path
           %li
             = link_to 'My Profile', user_profile_path(current_user, current_user.profile)
 

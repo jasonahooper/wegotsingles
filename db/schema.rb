@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20131120203416) do
     t.datetime "updated_at"
   end
 
+  create_table "payment_options", force: true do |t|
+    t.integer  "amount"
+    t.string   "interval"
+    t.string   "name"
+    t.string   "currency"
+    t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "profile_ethnicities", force: true do |t|
     t.integer  "profile_id"
     t.datetime "created_at"
@@ -80,6 +90,7 @@ ActiveRecord::Schema.define(version: 20131120203416) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "stripe_customer_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
