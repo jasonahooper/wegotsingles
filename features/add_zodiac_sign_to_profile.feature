@@ -1,5 +1,4 @@
 Feature: add zodiac sign to profile
-  @wip
   Scenario: A user adds her star sign to their profile
     Given That a user is registered
     And he is on the Edit Profile page for his profile

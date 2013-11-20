@@ -6,4 +6,4 @@ Feature: a user specifies their occupation on the profile
   When he enters "Developer" into the "Occupation"
   And he click the "Save" button
   Then he will see "Developer"
-  And he will see "occupation"
+  And he will see "Occupation"

@@ -8,7 +8,7 @@ module ProfilesHelper
   end
 
   def drink_frequencies
-    ['Never', 'Sometimes', 'At weekends', 'Often']
+    ['never', 'sometimes', 'at weekends', 'often']
   end
 
   def level_of_interest(integer)
