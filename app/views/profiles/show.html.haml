@@ -4,12 +4,12 @@
 #profile-show
   #profile.date_of_birth
     %h3
-      Date of Birth: 
+      Date of Birth:
       =@profile.user.date_of_birth
 
   #profile-smoking_habits
     %h3
-      Smoking Habits: 
+      Smoking Habits:
       =@profile.smoking_habits
 
   #profile-ethnicities
@@ -23,13 +23,13 @@
     %h3 Weight
     - if @profile.weight
       %p="#{@profile.weight} kgs"
-      %p="#{imperial_weight_show(@profile).first} st #{imperial_weight_show(@profile).last} pounds"
+      %p="#{@profile.imperial_weight_show.first} st #{@profile.imperial_weight_show.last} pounds"
 
   #profile-height
     %h3 Height
     - if @profile.height
       %p="#{@profile.height} cms"
-      %p="#{imperial_height_show(@profile).first} ft #{imperial_height_show(@profile).last} inches"
+      %p="#{@profile.imperial_height_show.first} ft #{@profile.imperial_height_show.last} inches"
 
   #profile-occupation
     %h3 Occupation: #{@profile.occupation}
