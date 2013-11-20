@@ -5,7 +5,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  #Auto creates a blank profile for each new user
   after_create do 
-    p = Profile.create(:user_id => self.id)
+    Profile.create(:user_id => self.id)
   end
+
+  #Parses stripe's json reponse to retrieve and store the customer code
+  def retrieve_id(json)
+    self.stripe_customer_id = json['id']
+  end
+
 end

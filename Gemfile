@@ -13,6 +13,7 @@ gem 'devise'
 gem 'quantity'
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'stripe'
 gem 'tinymce-rails'
 
 group :development, :test do

@@ -15,4 +15,3 @@ Feature: Add drinking habits to profile
     And he click the "Save" button
     Then he will see "weekends"
     And he will see "Mojito"
-

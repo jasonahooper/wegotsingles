@@ -27,7 +27,9 @@ describe Profile do
 
     context "with metric measurments" do
       before do
-        @profile = Profile.make!(:metric_height => 188)
+        @profile = Profile.make(:without_height)
+        @profile.metric_height = 188
+        @profile.save!
       end
 
       it "the user profile should have the height" do
@@ -59,7 +61,8 @@ describe Profile do
 
     context "Weight with metric measurments" do
       before do
-        @profile = Profile.new(:imperial_bln_weight => "false", :metric_weight => 80)
+        @profile = Profile.make(:without_weight)
+        @profile.metric_weight = 80
         @profile.save!
       end
 
