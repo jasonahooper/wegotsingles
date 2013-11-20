@@ -46,11 +46,11 @@ ActiveRecord::Schema.define(version: 20131119192009) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "smoking_habits"
-    t.integer  "height"
     t.string   "occupation"
+    t.integer  "height"
     t.string   "star_sign"
     t.integer  "star_sign_interest_level"
+    t.string   "smoking_habits"
   end
 
   create_table "users", force: true do |t|
