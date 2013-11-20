@@ -6,7 +6,7 @@ Feature: Add drinking habits to profile
     When he selects "weekends" from "profile_drink_frequency"
     And he click the "Save" button
     Then he will see "weekends"
-      
+
   Scenario: A user adds their drinking habits to their profile
     Given That a user is registered
     And he is on the Edit Profile page for his profile

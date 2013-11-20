@@ -11,6 +11,5 @@ end
 Then(/^I select "(.*?)" stone as my weight$/) do |weight|
   select weight, :from => "profile_imperial_weight"
   click_button("Save")
-  save_and_open_page
 end
 
