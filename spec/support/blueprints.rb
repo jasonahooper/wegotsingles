@@ -26,3 +26,7 @@ end
 Image.blueprint do
 
 end
+
+Image.blueprint(:with_file) do
+  image { File.open('spec/fixtures/gary.jpg') }
+end

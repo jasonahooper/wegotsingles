@@ -13,8 +13,11 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     @ethnicities = Ethnicity.select(:id, :ethnicity)
     @user = current_user
+    @education_options = Profile.education_options
     @height_metric_options = (100..230).to_a
     @height_imperial_options = ((2.0)..(7.2)).step(0.1).to_a.map { |a| a.round(1) }
+    @weight_metric_options = (30..250).to_a
+    @weight_imperial_options = ((2.0)..(25.5)).step(0.1).to_a.map { |a| a.round(1) }
     @languages = Language.select(:id, :language)
     @profile.images.new
   end
@@ -25,8 +28,10 @@ class ProfilesController < ApplicationController
 
   private
     def profile_params
-      params.require(:profile).permit(:smoking_habits, :star_sign, :star_sign_interest_level,
-        :occupation, :imperial, :height, :metric_height, :imperial_height,
-        :images_attributes => [ :image, :id, :_destroy, :remove_image ], :ethnicity_ids => [], :language_ids => [])
+      params.require(:profile).permit(:likes_and_dislikes, :about_you, :looking_for, :drink_frequency, :favourite_tipple, :education, :smoking_habits, :star_sign,
+        :star_sign_interest_level, :occupation, :imperial, :height,
+        :metric_height, :imperial_height, :imperial_bln_weight, :weight,
+        :metric_weight, :imperial_weight, :images_attributes => [ :image, :id,
+          :_destroy, :remove_image ], :ethnicity_ids => [], :language_ids => [])
     end
 end
