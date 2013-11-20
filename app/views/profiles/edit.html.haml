@@ -20,5 +20,14 @@
       = f.hidden_field :imperial
     %fieldset
       = f.collection_check_boxes :language_ids, @languages, :id, :language
+    %fieldset
+      = f.fields_for :images do |img|
+        = img.label :image
+        = img.file_field :image
+        - @profile.images.each do |show|
+          .thumbnail-image
+            = image_tag show.image.thumb.url
+          / .thumbnail-check
+      /       = f.checkbox :delete
     %fieldset.button
       = f.submit "Save"

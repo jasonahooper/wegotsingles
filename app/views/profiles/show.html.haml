@@ -5,7 +5,7 @@
 
   #profile-smoking_habits
     %h3
-      Smoking Habits: 
+      Smoking Habits:
       =@profile.smoking_habits
 
   #profile-ethnicities
@@ -33,6 +33,12 @@
       -@profile.languages.each do |language|
         %li
           = language.language
+
+  %section#profile-images
+    %h3 Images
+    -@profile.images.each do |show|
+      .thumbnail-image
+        = image_tag show.image.thumb.url
 
 .actions
   = link_to 'Edit', edit_user_profile_path(@profile.user, @profile)

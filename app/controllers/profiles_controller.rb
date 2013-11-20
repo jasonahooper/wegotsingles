@@ -15,6 +15,7 @@ class ProfilesController < ApplicationController
     @height_metric_options = (100..230).to_a
     @height_imperial_options = ((2.0)..(7.2)).step(0.1).to_a.map { |a| a.round(1) }
     @languages = Language.select(:id, :language)
+    @profile.images.new
   end
 
   def show
