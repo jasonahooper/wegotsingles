@@ -9,7 +9,6 @@ Feature: Add height to profile
     Then I select 182 cm as my height
     Then I see my height on the profile as metric "182" and imperial "6.0 ft"
 
-  @javascript
   Scenario: I add the height in imperial
     Then I select "6.0" ft as my height
     Then I see my height on the profile as metric "182" and imperial "6.0 ft"

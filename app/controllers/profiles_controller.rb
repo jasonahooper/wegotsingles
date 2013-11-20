@@ -22,6 +22,6 @@ class ProfilesController < ApplicationController
 
   private
     def profile_params
-      params.require(:profile).permit(:star_sign, :star_sign_interest_level, :occupation, :imperial, :height, :metric_height, :imperial_height, :ethnicity_ids => [])
+      params.require(:profile).permit(:favourite_tipple, :drink_frequency, :star_sign, :star_sign_interest_level, :occupation, :imperial, :height, :metric_height, :imperial_height, :ethnicity_ids => [])
     end
 end

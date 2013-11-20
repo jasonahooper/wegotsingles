@@ -7,6 +7,10 @@ module ProfilesHelper
     [['Not interested', 1 ], ['Interested', 2 ], ['Very interested', 3 ]]
   end
 
+  def drink_frequencies
+    ['Never', 'Sometimes', 'At weekends', 'Often']
+  end
+
   def level_of_interest(integer)
     case integer
     when 1
