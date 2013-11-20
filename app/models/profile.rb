@@ -82,6 +82,7 @@ class Profile < ActiveRecord::Base
 
   def metric_weight
     read_attribute :weight
+  end
 
   def self.education_options
     [["Secondary School", 0], ["College", 1], ["Bachelor's Degree", 2], ["Master's Degree", 3], ["PhD", 4]]
