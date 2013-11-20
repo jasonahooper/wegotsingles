@@ -61,6 +61,10 @@ ActiveRecord::Schema.define(version: 20131120184719) do
     t.string   "favourite_tipple"
     t.string   "smoking_habits"
     t.integer  "weight"
+    t.integer  "education"
+    t.text     "about_you"
+    t.text     "likes_and_dislikes"
+    t.text     "looking_for"
   end
 
   create_table "users", force: true do |t|
