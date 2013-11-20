@@ -24,6 +24,5 @@ When(/^he enters valid card data$/) do
 end
 
 Then(/^he is informed that his payment was successful$/) do
-  save_and_open_page
   assert page.find('#content').has_content?("Your payment was successful")
 end
