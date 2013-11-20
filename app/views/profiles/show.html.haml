@@ -13,13 +13,13 @@
     %h3 Weight
     - if @profile.weight
       %p="#{@profile.weight} kgs"
-      %p="#{Profile.metric_to_imperial_weight_conversion(@profile.weight)} stone"
+      %p="#{@profile.imperial_weight_show.first} st #{@profile.imperial_weight_show.last} pounds"
 
   #profile-height
     %h3 Height
     - if @profile.height
       %p="#{@profile.height} cms"
-      %p="#{Profile.metric_to_imperial_height_conversion(@profile.height)} ft"
+      %p="#{@profile.imperial_height_show.first} ft #{@profile.imperial_height_show.last} inches"
 
   #profile-occupation
     %h3 Occupation: #{@profile.occupation}

@@ -39,4 +39,24 @@ class Profile < ActiveRecord::Base
     kilograms = pounds.pounds.to_kilograms
     kilograms.to_i.round(1)
   end
+
+  def imperial_casting_frac(number)
+     BigDecimal.new(number, 3).frac
+  end
+
+  def imperial_casting_fix(number)
+     BigDecimal.new(number, 3).frac
+  end
+
+  def imperial_height_show
+    h = BigDecimal.new(Profile.metric_to_imperial_height_conversion(self.height), 3)
+    feet, inches = h.fix.to_i, (h.frac*10).to_i
+    return [feet, inches]
+  end
+
+  def imperial_weight_show
+    w = BigDecimal.new(Profile.metric_to_imperial_weight_conversion(self.weight), 3)
+    stones, pounds = w.fix.to_i, (w.frac*10).to_i
+    return [stones, pounds]
+  end
 end
