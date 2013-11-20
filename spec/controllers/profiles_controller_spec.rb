@@ -146,14 +146,14 @@ describe ProfilesController do
         new_file = "#{new_path}/#{@test_file}"
         File::exists?(new_file).should eq(true)
       end
+      it 'should save the thumbnail to a directory' do
+        new_path = "public/uploads/image/image/#{assigns(:profile).images.last.id}"
+        new_file = "#{new_path}/thumb_#{@test_file}"
+        File::exists?(new_file).should eq(true)
+      end
       it 'should have one profile image' do
         assigns(:profile).images.count.should eq(1)
       end
-    #   it 'should save the thumbnail image to a directory' do
-    #     new_path = "public/uploads/track/image/#{assigns(:track).id}"
-    #     new_file = "#{new_path}/thumb_#{@test_file}"
-    #     File::exists?(new_file).should be(true)
-    #   end
     end
 
     context 'Upload an additional image' do
@@ -170,14 +170,14 @@ describe ProfilesController do
         new_file = "#{new_path}/#{@test_file}"
         File::exists?(new_file).should eq(true)
       end
+      it 'should save the thumbnail to a directory' do
+        new_path = "public/uploads/image/image/#{assigns(:profile).images.last.id}"
+        new_file = "#{new_path}/thumb_#{@test_file}"
+        File::exists?(new_file).should eq(true)
+      end
       it 'should have two profile images' do
         assigns(:profile).images.count.should eq(2)
       end
-    #   it 'should save the thumbnail image to a directory' do
-    #     new_path = "public/uploads/track/image/#{assigns(:track).id}"
-    #     new_file = "#{new_path}/thumb_#{@test_file}"
-    #     File::exists?(new_file).should be(true)
-    #   end
     end
 
     context 'Remove the only image' do
@@ -191,11 +191,6 @@ describe ProfilesController do
       it 'should have no profile images' do
         assigns(:profile).images.count.should eq(0)
       end
-    #   it 'should save the thumbnail image to a directory' do
-    #     new_path = "public/uploads/track/image/#{assigns(:track).id}"
-    #     new_file = "#{new_path}/thumb_#{@test_file}"
-    #     File::exists?(new_file).should be(true)
-    #   end
     end
 
     context 'Remove one of two images' do
@@ -210,11 +205,6 @@ describe ProfilesController do
       it 'should have one profile images' do
         assigns(:profile).images.count.should eq(1)
       end
-    #   it 'should save the thumbnail image to a directory' do
-    #     new_path = "public/uploads/track/image/#{assigns(:track).id}"
-    #     new_file = "#{new_path}/thumb_#{@test_file}"
-    #     File::exists?(new_file).should be(true)
-    #   end
     end
 
     context 'Upload an image and remove an image' do
@@ -232,14 +222,14 @@ describe ProfilesController do
         new_file = "#{new_path}/#{@test_file}"
         File::exists?(new_file).should eq(true)
       end
+      it 'should save the thumbnail to a directory' do
+        new_path = "public/uploads/image/image/#{assigns(:profile).images.last.id}"
+        new_file = "#{new_path}/thumb_#{@test_file}"
+        File::exists?(new_file).should eq(true)
+      end
       it 'should have one profile image' do
         assigns(:profile).images.count.should eq(1)
       end
-    #   it 'should save the thumbnail image to a directory' do
-    #     new_path = "public/uploads/track/image/#{assigns(:track).id}"
-    #     new_file = "#{new_path}/thumb_#{@test_file}"
-    #     File::exists?(new_file).should be(true)
-    #   end
     end
   end
 end
