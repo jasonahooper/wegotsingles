@@ -53,5 +53,20 @@
         %li
           = language.language
 
+  #profile-about-you
+  - if @profile.about_you
+    %h3 About you
+    = @profile.about_you.html_safe
+
+  #profile-likes-and-dislikes
+  - if @profile.likes_and_dislikes
+    %h3 Likes and dislikes
+    = @profile.likes_and_dislikes.html_safe
+
+  #profile-looking-for
+  - if @profile.looking_for
+    %h3 Looking for
+    = @profile.looking_for.html_safe
+
 .actions
   = link_to 'Edit', edit_user_profile_path(@profile.user, @profile)
