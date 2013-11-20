@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe PaymentOption do
-  it "should create a paymeny on stripe on create" do
+  it "should create a plan on stripe on create" do
     @payment_option = PaymentOption.make
     Stripe::Plan.expects(:create).with({
       :amount => @payment_option.amount,
@@ -12,4 +12,6 @@ describe PaymentOption do
     })
     @payment_option.save!
   end
+
+
 end
