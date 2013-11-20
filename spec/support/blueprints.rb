@@ -22,3 +22,11 @@ end
 Profile.blueprint(:imperial) do
 
 end
+
+PaymentOption.blueprint do
+  amount { 1000 }
+  interval { "month" }
+  name { "Premium Monthly" }
+  currency { 'GBP' }
+  code { "premium-monthly" }
+end

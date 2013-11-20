@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119204257) do
+ActiveRecord::Schema.define(version: 20131120112848) do
 
   create_table "ethnicities", force: true do |t|
     t.string   "ethnicity"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20131119204257) do
 
   create_table "languages", force: true do |t|
     t.string   "language"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payment_options", force: true do |t|
+    t.integer  "amount"
+    t.string   "interval"
+    t.string   "name"
+    t.string   "currency"
+    t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

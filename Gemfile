@@ -11,6 +11,7 @@ gem 'thin'
 gem 'haml'
 gem 'devise'
 gem 'quantity'
+gem 'stripe'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
