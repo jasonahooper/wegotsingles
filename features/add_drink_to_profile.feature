@@ -1,5 +1,4 @@
 Feature: Add drinking habits to profile
-  
   Scenario: A user adds their drinking habits to their profile
     Given That a user is registered
     And he is on the Edit Profile page for his profile
