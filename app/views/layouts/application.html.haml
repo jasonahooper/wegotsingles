@@ -10,7 +10,7 @@
     = stylesheet_link_tag "application", :media => "all"
 
     = javascript_include_tag "application"
-%body
+%body{:data => {:env => Rails.env}}
   -if flash[:notice]
     .flash.notice
       =flash[:notice]

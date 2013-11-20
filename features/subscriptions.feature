@@ -1,4 +1,5 @@
 Feature: Premium Membership
+  @wip @javascript
   Scenario: A man pays for a monthly subscription
     Given that a man has registered
     And he enters signs in
