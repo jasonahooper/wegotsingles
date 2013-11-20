@@ -1,4 +1,9 @@
 module ProfilesHelper
+
+  def retreive_education(education)
+    Profile.education_options.rassoc(education).first
+  end
+
   def star_signs
     ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces']
   end

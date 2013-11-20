@@ -1,5 +1,5 @@
 class AddEducationToProfile < ActiveRecord::Migration
   def change
-    add_column :profiles, :education, :string
+    add_column :profiles, :education, :integer
   end
 end

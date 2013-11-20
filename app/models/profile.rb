@@ -5,7 +5,7 @@ class Profile < ActiveRecord::Base
   has_many :profile_languages
   has_many :languages, :through => :profile_languages
 
-  attr_accessor :imperial, :imperial_bln_weight, :metric_height, :imperial_height, :imperial_weight, :metric_weight
+  attr_accessor :string_education, :imperial, :imperial_bln_weight, :metric_height, :imperial_height, :imperial_weight, :metric_weight
 
   before_validation do
     if self.imperial == "true"
@@ -15,7 +15,7 @@ class Profile < ActiveRecord::Base
     end
   end
 
-    before_validation do
+  before_validation do
     if self.imperial_bln_weight == "true"
       self.weight = Profile.imperial_to_metric_weight_conversion(self.imperial_weight)
     else
@@ -63,6 +63,7 @@ class Profile < ActiveRecord::Base
   end
 
   def self.education_options
-    ["Secondary School", "College", "Bachelor's Degree", "Master's Degree", "PhD"]
+    [["Secondary School", 0], ["College", 1], ["Bachelor's Degree", 2], ["Master's Degree", 3], ["PhD", 4]]
   end
+
 end

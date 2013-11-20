@@ -32,7 +32,8 @@
       %p="#{@profile.imperial_height_show.first} ft #{@profile.imperial_height_show.last} inches"
 
   #profile-education
-    %h3 Education: #{@profile.education}
+    - if @profile.education
+      %h3 Education: #{retreive_education(@profile.education)}
 
   #profile-occupation
     %h3 Occupation: #{@profile.occupation}

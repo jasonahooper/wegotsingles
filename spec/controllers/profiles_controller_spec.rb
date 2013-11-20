@@ -10,8 +10,7 @@ describe ProfilesController do
 
   describe 'Education feature' do
     before do
-      @education = 'Bachelor\'s Degree'
-      @education2 = 'High School'
+      @education = 1
     end
 
     context 'Add education on Profile' do
@@ -30,6 +29,7 @@ describe ProfilesController do
         @profile.reload
         @profile.education.should eq(@education)
       end
+
     end
 
     context 'Update education on Profile' do
