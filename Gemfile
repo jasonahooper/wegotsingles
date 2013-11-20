@@ -11,6 +11,7 @@ gem 'thin'
 gem 'haml'
 gem 'devise'
 gem 'quantity'
+gem 'tinymce-rails'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
@@ -24,4 +25,5 @@ group :development, :test do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'simplecov', :require => false
 end

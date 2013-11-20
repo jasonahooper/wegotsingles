@@ -5,7 +5,7 @@ class Profile < ActiveRecord::Base
   has_many :profile_languages
   has_many :languages, :through => :profile_languages
 
-  attr_accessor :imperial, :imperial_bln_weight, :metric_height, :imperial_height, :imperial_weight, :metric_weight
+  attr_accessor :string_education, :imperial, :imperial_bln_weight, :metric_height, :imperial_height, :imperial_weight, :metric_weight
 
   def metric_to_imperial_height_conversion(height)
     height.centimeter.to_feet.to_f.round(1)
@@ -82,6 +82,9 @@ class Profile < ActiveRecord::Base
 
   def metric_weight
     read_attribute :weight
+
+  def self.education_options
+    [["Secondary School", 0], ["College", 1], ["Bachelor's Degree", 2], ["Master's Degree", 3], ["PhD", 4]]
   end
 
 end

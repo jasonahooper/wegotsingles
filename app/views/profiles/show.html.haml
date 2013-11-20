@@ -31,11 +31,20 @@
       %p="#{@profile.height} cms"
       %p="#{imperial_height_show(@profile).first} ft #{imperial_height_show(@profile).last} inches"
 
+  #profile-education
+    - if @profile.education
+      %h3 Education: #{retreive_education(@profile.education)}
+
   #profile-occupation
     %h3 Occupation: #{@profile.occupation}
 
   #profile-starsign
     %h3 Star-sign: #{@profile.star_sign}, and I'm #{level_of_interest(@profile.star_sign_interest_level)}
+
+  #profile-drinkfrequency
+    %h3 Drinks #{@profile.drink_frequency}
+    - if @profile.favourite_tipple
+      %h3 Likes to drink #{@profile.favourite_tipple}
 
   #profile-languages
     %h3 Languages
@@ -43,6 +52,22 @@
       -@profile.languages.each do |language|
         %li
           = language.language
+
+  %section.biography
+    #profile-about-you
+    - if @profile.about_you
+      %h3 About you
+      = @profile.about_you.html_safe
+
+    #profile-likes-and-dislikes
+    - if @profile.likes_and_dislikes
+      %h3 Likes and dislikes
+      = @profile.likes_and_dislikes.html_safe
+
+    #profile-looking-for
+    - if @profile.looking_for
+      %h3 Looking for
+      = @profile.looking_for.html_safe
 
 .actions
   = link_to 'Edit', edit_user_profile_path(@profile.user, @profile)

@@ -5,7 +5,6 @@ Feature: Add weight to profile
     And I am logged in
     And I am on the edit section
 
-
   Scenario: I add the weight in metric
     Then I select 80 as my weight
     Then I see my weight on the profile as metric "80" and imperial "12 st 6 pounds"

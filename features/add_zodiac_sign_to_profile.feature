@@ -5,4 +5,5 @@ Feature: add zodiac sign to profile
     And he is on the Edit Profile page for his profile
     When he selects a "Aquarius" and "Not interested"
     And he click the "Save" button
-    Then he will see "Star-sign: Aquarius, and I'm not interested"
+    Then he will see "Aquarius"
+    And he will see "not interested"
