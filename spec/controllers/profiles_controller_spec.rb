@@ -114,7 +114,6 @@ describe ProfilesController do
     end
 
     context "For height with imperial" do
-
       before do
         @valid_params = { :imperial => "true", :imperial_height => 6.2 }
         patch :update, :id => @user.profile.id, :user_id => @user.id, :profile => @valid_params
@@ -130,6 +129,43 @@ describe ProfilesController do
         @profile.height.should eq(188)
       end
     end
-  end
 
+    context "For weight feature" do
+      context "For weight with metric" do
+
+        before do
+          @valid_params = { :imperial_bln_weight => "false", :metric_weight => 80 }
+          patch :update, :id => @user.profile.id, :user_id => @user.id, :profile => @valid_params
+        end
+
+        it "the user profile should have the height" do
+          @profile.reload
+          @profile.weight.should_not be_nil
+        end
+
+        it "should have the metric measurement" do
+          @profile.reload
+          @profile.weight.should eq(80)
+        end
+
+      end
+
+      context "For weight with imperial" do
+        before do
+          @valid_params = { :imperial_bln_weight => "true", :imperial_weight => 12.59 }
+          patch :update, :id => @user.profile.id, :user_id => @user.id, :profile => @valid_params
+        end
+
+        it "the user profile should have the height" do
+          @profile.reload
+          @profile.weight.should_not be_nil
+        end
+
+        it "should have the metric measurement" do
+          @profile.reload
+          @profile.weight.should eq(79)
+        end
+      end
+    end
+  end
 end
