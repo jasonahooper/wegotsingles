@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119194332) do
+ActiveRecord::Schema.define(version: 20131119204257) do
 
   create_table "ethnicities", force: true do |t|
     t.string   "ethnicity"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20131119194332) do
     t.string   "star_sign"
     t.integer  "star_sign_interest_level"
     t.string   "smoking_habits"
+    t.string   "drink_frequency"
+    t.string   "favourite_tipple"
   end
 
   create_table "users", force: true do |t|
