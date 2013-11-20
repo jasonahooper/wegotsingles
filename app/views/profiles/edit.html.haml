@@ -27,7 +27,8 @@
         - @profile.images.each do |show|
           .thumbnail-image
             = image_tag show.image.thumb.url
-          / .thumbnail-check
-      /       = f.checkbox :delete
+          .thumbnail-check
+            = img.check_box :remove_image
+            Delete
     %fieldset.button
       = f.submit "Save"

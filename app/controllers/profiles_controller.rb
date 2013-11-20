@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   def update
+    binding.pry
     @profile = Profile.find(params[:id])
     if @profile.update_attributes(profile_params)
       redirect_to user_profile_path(@profile.user, @profile)
@@ -26,6 +27,6 @@ class ProfilesController < ApplicationController
     def profile_params
       params.require(:profile).permit(:smoking_habits, :star_sign, :star_sign_interest_level,
         :occupation, :imperial, :height, :metric_height, :imperial_height,
-        :images_attributes => [ :image, :id, :_destroy ], :ethnicity_ids => [], :language_ids => [])
+        :images_attributes => [ :image, :id, :_destroy, :remove_image ], :ethnicity_ids => [], :language_ids => [])
     end
 end
