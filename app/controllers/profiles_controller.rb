@@ -26,11 +26,9 @@ class ProfilesController < ApplicationController
   end
 
   private
-    def profile_params
-      params.require(:profile).permit(:likes_and_dislikes, :about_you, :looking_for, :drink_frequency, :favourite_tipple, :education, :smoking_habits, :star_sign,
-        :star_sign_interest_level, :occupation, :imperial, :height,
-        :metric_height, :imperial_height, :imperial_bln_weight, :weight,
-        :metric_weight, :imperial_weight, :images_attributes => [ :image, :id,
-          :_destroy ], :ethnicity_ids => [], :language_ids => [])
-    end
+  def profile_params
+    params.require(:profile).permit(:religion, :religion_interest_level, :about_you, :likes_and_dislikes, :looking_for, :education, :favourite_tipple, :drink_frequency, :smoking_habits, :star_sign, :star_sign_interest_level,
+     :occupation, :imperial, :height, :metric_height, :imperial_height, :imperial_bln_weight, :weight, :metric_weight, :imperial_weight, :images_attributes => [ :image, :id,
+          :_destroy ],  :ethnicity_ids => [], :language_ids => [])
+  end
 end
