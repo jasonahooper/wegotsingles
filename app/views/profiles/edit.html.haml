@@ -10,7 +10,7 @@
       = f.select(:smoking_habits, ['Never', 'Sometimes', 'Often'])
     %fieldset.star_sign
       = f.select(:star_sign, star_signs)
-      = f.select(:star_sign_interest_level, options_for_select(levels_of_interest))
+      = f.select(:star_sign_interest_level, options_for_select(levels_of_interest,  selected = @profile.star_sign_interest_level))
     %fieldset.drinking_frequency
       = f.select(:drink_frequency, drink_frequencies)
       = f.label :favourite_tipple
