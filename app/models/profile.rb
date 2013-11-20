@@ -61,4 +61,8 @@ class Profile < ActiveRecord::Base
     stones, pounds = w.fix.to_i, (w.frac*10).to_i
     return [stones, pounds]
   end
+
+  def self.education_options
+    ["Secondary School", "College", "Bachelor's Degree", "Master's Degree", "PhD"]
+  end
 end

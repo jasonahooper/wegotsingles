@@ -8,6 +8,47 @@ describe ProfilesController do
     @user.profile = @profile
   end
 
+  describe 'Education feature' do
+    before do
+      @education = 'Bachelor\'s Degree'
+      @education2 = 'High School'
+    end
+
+    context 'Add education on Profile' do
+      before do
+        @valid_params = { :profile => { :education => @education } }
+
+        patch :update, @valid_params.merge(:id => @profile.id, :user_id => @user.id)
+      end
+
+      it "should store education" do
+        @profile.reload
+        @profile.education.should_not be_nil
+      end
+
+      it "should have the correct education" do
+        @profile.reload
+        @profile.education.should eq(@education)
+      end
+    end
+
+    context 'Update education on Profile' do
+      before do
+        @profile.education = @education
+        @profile.save!
+        @valid_params = { :profile => { :education => @education2 } }
+
+        patch :update, @valid_params.merge(:id => @profile.id, :user_id => @user.id)
+      end
+
+      it "should have the new education" do
+        @profile.reload
+        @profile.education.should eq(@education2)
+        @profile.education.should_not eq(@education)
+      end
+    end
+  end
+
   describe 'Ethnicity feature' do
     before do
       @ethnicity1 = Ethnicity.make!(:ethnicity => "White")

@@ -16,6 +16,9 @@
       = f.label :favourite_tipple
       = f.text_field(:favourite_tipple)
     %fieldset
+      = f.label :education
+      = f.select :education, @education_options, { include_blank: true }
+    %fieldset
       = f.label :metric_height
       = f.select :metric_height, @height_metric_options, { include_blank: true }
     %fieldset
