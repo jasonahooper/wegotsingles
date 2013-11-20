@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   protected
   #Adds our non-standard fields to devise registration sanitizer
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << [:type, :first_name]
+    devise_parameter_sanitizer.for(:sign_up) << [:type, :first_name, :date_of_birth, :username]
   end
 end
