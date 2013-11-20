@@ -22,3 +22,7 @@ end
 Profile.blueprint(:imperial) do
 
 end
+
+Image.blueprint do
+
+end

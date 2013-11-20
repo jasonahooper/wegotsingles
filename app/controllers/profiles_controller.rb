@@ -25,6 +25,6 @@ class ProfilesController < ApplicationController
     def profile_params
       params.require(:profile).permit(:smoking_habits, :star_sign, :star_sign_interest_level,
         :occupation, :imperial, :height, :metric_height, :imperial_height,
-        :ethnicity_ids => [], :language_ids => [])
+        :images_attributes => [ :image, :id, :_destroy ], :ethnicity_ids => [], :language_ids => [])
     end
 end

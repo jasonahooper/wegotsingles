@@ -3,9 +3,8 @@ require 'spec_helper'
 describe ProfilesController do
 
   before(:each) do
-    @profile = Profile.make!
     @user = User.make!
-    @user.profile = @profile
+    @profile = @user.profile
   end
 
   describe 'Ethnicity feature' do
@@ -132,25 +131,115 @@ describe ProfilesController do
     end
   end
 
-  # describe 'Image upload feature' do
-  #   before do
-  #     @test_file = 'gary.jpg'
-  #     file = fixture_file_upload("/" + @test_file,'application/jpg')
-  #     post :create, { :track =>
-  #       { :title => 'test title', :artist => 'test artist', :image => file,
-  #           :song => song }
-  #     }
-  #   end
-  #   it 'should save the image to a directory' do
-  #     new_path = "public/uploads/track/image/#{assigns(:track).id}"
-  #     new_file = "#{new_path}/#{@test_file}"
-  #     File::exists?(new_file).should be(true)
-  #   end
-  #   it 'should save the thumbnail image to a directory' do
-  #     new_path = "public/uploads/track/image/#{assigns(:track).id}"
-  #     new_file = "#{new_path}/thumb_#{@test_file}"
-  #     File::exists?(new_file).should be(true)
-  #   end
+  describe 'Image upload feature' do
 
+    context 'Upload the first image' do
+      before do
+        @test_file = 'gary.jpg'
+        file = fixture_file_upload("/" + @test_file,'application/jpg')
+        @valid_params = { :images_attributes => [ :image => file ] }
+        patch :update, :id => @user.profile.id, :user_id => @user.id,
+          :profile => @valid_params
+      end
+      it 'should save the image to a directory' do
+        new_path = "public/uploads/image/image/#{assigns(:profile).images.last.id}"
+        new_file = "#{new_path}/#{@test_file}"
+        File::exists?(new_file).should eq(true)
+      end
+      it 'should have one profile image' do
+        assigns(:profile).images.count.should eq(1)
+      end
+    #   it 'should save the thumbnail image to a directory' do
+    #     new_path = "public/uploads/track/image/#{assigns(:track).id}"
+    #     new_file = "#{new_path}/thumb_#{@test_file}"
+    #     File::exists?(new_file).should be(true)
+    #   end
+    end
+
+    context 'Upload an additional image' do
+      before do
+        @profile.images << Image.make!(:image => "first.jpg")
+        @test_file = 'gary.jpg'
+        file = fixture_file_upload("/" + @test_file,'application/jpg')
+        @valid_params = { :images_attributes => [ :image => file ] }
+        patch :update, :id => @user.profile.id, :user_id => @user.id,
+          :profile => @valid_params
+      end
+      it 'should save the image to a directory' do
+        new_path = "public/uploads/image/image/#{assigns(:profile).images.last.id}"
+        new_file = "#{new_path}/#{@test_file}"
+        File::exists?(new_file).should eq(true)
+      end
+      it 'should have two profile images' do
+        assigns(:profile).images.count.should eq(2)
+      end
+    #   it 'should save the thumbnail image to a directory' do
+    #     new_path = "public/uploads/track/image/#{assigns(:track).id}"
+    #     new_file = "#{new_path}/thumb_#{@test_file}"
+    #     File::exists?(new_file).should be(true)
+    #   end
+    end
+
+    context 'Remove an image' do
+      before do
+        @profile.images << Image.make!(:image => "first.jpg")
+        image_id = @profile.images.first.id
+        @valid_params = { :images_attributes => [ :id => image_id, :_destroy => true ] }
+        patch :update, :id => @user.profile.id, :user_id => @user.id,
+          :profile => @valid_params
+      end
+      it 'should have no profile images' do
+        assigns(:profile).images.count.should eq(0)
+      end
+    #   it 'should save the thumbnail image to a directory' do
+    #     new_path = "public/uploads/track/image/#{assigns(:track).id}"
+    #     new_file = "#{new_path}/thumb_#{@test_file}"
+    #     File::exists?(new_file).should be(true)
+    #   end
+    end
+
+    context 'Remove one of two images' do
+      before do
+        @profile.images << Image.make!(:image => "first.jpg")
+        @profile.images << Image.make!(:image => "second.jpg")
+        image_id = @profile.images.first.id
+        @valid_params = { :images_attributes => [ :id => image_id, :_destroy => true ] }
+        patch :update, :id => @user.profile.id, :user_id => @user.id,
+          :profile => @valid_params
+      end
+      it 'should have one profile images' do
+        assigns(:profile).images.count.should eq(1)
+      end
+    #   it 'should save the thumbnail image to a directory' do
+    #     new_path = "public/uploads/track/image/#{assigns(:track).id}"
+    #     new_file = "#{new_path}/thumb_#{@test_file}"
+    #     File::exists?(new_file).should be(true)
+    #   end
+    end
+
+    context 'Upload an image and remove an image' do
+      before do
+        @profile.images << Image.make!(:image => "first.jpg")
+        image_id = @profile.images.first.id
+        @test_file = 'gary.jpg'
+        file = fixture_file_upload("/" + @test_file,'application/jpg')
+        @valid_params = { :images_attributes => [ { :image => file }, { :id => image_id, :_destroy => true } ] }
+        patch :update, :id => @user.profile.id, :user_id => @user.id,
+          :profile => @valid_params
+      end
+      it 'should save the image to a directory' do
+        new_path = "public/uploads/image/image/#{assigns(:profile).images.last.id}"
+        new_file = "#{new_path}/#{@test_file}"
+        File::exists?(new_file).should eq(true)
+      end
+      it 'should have one profile image' do
+        assigns(:profile).images.count.should eq(1)
+      end
+    #   it 'should save the thumbnail image to a directory' do
+    #     new_path = "public/uploads/track/image/#{assigns(:track).id}"
+    #     new_file = "#{new_path}/thumb_#{@test_file}"
+    #     File::exists?(new_file).should be(true)
+    #   end
+    end
   end
 end
