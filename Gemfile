@@ -11,6 +11,8 @@ gem 'thin'
 gem 'haml'
 gem 'devise'
 gem 'quantity'
+gem 'mini_magick'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
