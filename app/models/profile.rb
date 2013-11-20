@@ -8,14 +8,6 @@ class Profile < ActiveRecord::Base
   attr_accessor :imperial, :imperial_bln_weight, :metric_height, :imperial_height, :imperial_weight, :metric_weight
 
   before_validation do
-    if self.imperial == "true"
-      self.height = imperial_to_metric_height_conversion(self.imperial_height)
-    else
-      self.height = self.metric_height
-    end
-  end
-
-  before_validation do
     if self.imperial_bln_weight == "true"
       self.weight = imperial_to_metric_weight_conversion(self.imperial_weight)
     else
@@ -43,7 +35,7 @@ class Profile < ActiveRecord::Base
   end
 
   def imperial_height_show
-    h = BigDecimal.new(metric_to_imperial_height_conversion(self.height), 3)
+    h = BigDecimal.new(self.imperial_height, 3)
     feet, inches = h.fix.to_i, (h.frac*10).to_i
     return [feet, inches]
   end
@@ -54,14 +46,28 @@ class Profile < ActiveRecord::Base
     return [stones, pounds]
   end
 
-  # def imperial_height
-  #   h = self.height || @imperial_height.to_f
-  #   imperial_to_metric_weight_conversion(h) if h
-  # end
+  def imperial_height=(height)
+    if self.imperial == "true"
+      write_attribute(:height, imperial_to_metric_height_conversion(height))
+    end
+    @imperial_height = height
+  end
 
-  # def metric_height
-  #   read_attribute :height
-  # end
+  def imperial_height
+    h = read_attribute(:height)
+    @imperial_height ||= metric_to_imperial_height_conversion(h) if h
+  end
+
+  def metric_height=(height)
+    if self.imperial != "true"
+     write_attribute(:height, height)
+    end
+   @metric_height = height
+  end
+
+  def metric_height
+    read_attribute :height
+  end
 
   # def imperial_weight
   #   w = self.weight || @imperial_weight.to_f

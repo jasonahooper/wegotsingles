@@ -18,16 +18,6 @@ module ProfilesHelper
     end
   end
 
-  def imperial_height_show(profile)
-    h = BigDecimal.new(profile.metric_to_imperial_height_conversion(height), 3)
-    feet, inches = h.fix.to_i, (h.frac*10).to_i
-    return [feet, inches]
-  end
 
-  def imperial_weight_show(profile)
-    w = BigDecimal.new(profile.metric_to_imperial_height_conversion(weight), 3)
-    stones, pounds = w.fix.to_i, (w.frac*10).to_i
-    return [stones, pounds]
-  end
 
 end

@@ -25,7 +25,9 @@ describe Profile do
 
     context "with metric measurments" do
       before do
-        @profile = Profile.make!(:metric_height => 188)
+        @profile = Profile.make(:without_height)
+        @profile.metric_height = 188
+        @profile.save!
       end
 
       it "the user profile should have the height" do

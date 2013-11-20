@@ -19,6 +19,10 @@ Profile.blueprint do
   height { 191 }
 end
 
+Profile.blueprint(:without_height) do
+  height { nil }
+end
+
 Profile.blueprint(:imperial) do
 
 end
