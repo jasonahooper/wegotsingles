@@ -8,7 +8,8 @@
 
   %section.profile-body
     %section.col.profile-images
-      = image_tag @profile.images.first.image.url
+      - if @profile.images.first
+        = image_tag @profile.images.first.image.url
 
       -@profile.images.each do |show|
         .thumbnail-image
