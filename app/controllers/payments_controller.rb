@@ -1,7 +1,10 @@
 class PaymentsController < ApplicationController
 
   def new
-
+    if current_user.stripe_customer_id
+      flash[:notice] = 'You already have an active subscription.'
+      redirect_to root_path
+    end
   end
 
   def create
@@ -23,7 +26,7 @@ class PaymentsController < ApplicationController
     cu.cancel_subscription
     current_user.stripe_customer_id = nil
     current_user.save!
-    flash[:notice] = ("Subscription cancelled.")
+    flash[:notice] = ('Subscription cancelled.')
     redirect_to edit_user_registration_path
   end
 end
