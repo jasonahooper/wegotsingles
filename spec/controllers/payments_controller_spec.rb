@@ -22,7 +22,7 @@ describe PaymentsController do
         # @payment_option.save!
 
         params = {
-          :token => "token",
+          :stripeToken => "token",
           :email => @user.email
         }
 

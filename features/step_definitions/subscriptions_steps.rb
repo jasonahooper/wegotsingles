@@ -16,14 +16,13 @@ end
 When(/^he enters valid card data$/) do
   customer_json = JSON(File.read('spec/fixtures/customer.json'))
   Stripe::Customer.stubs(:create).returns(customer_json)
-  fill_in "Card Number", :with => "1234 1234 1234 1234"
+  fill_in "Card Number", :with => "4012888888881881"
   fill_in "CVC", :with => "123"
-  fill_in "month", :with => "12"
-  fill_in "year", :with => "2015"
+  fill_in 'expiry_month', :with => "12"
+  fill_in 'expiry_year', :with => "2015"
   click_button "Submit Payment"
 end
 
 Then(/^he is informed that his payment was successful$/) do
-  save_and_open_page
   assert page.find('#content').has_content?("Your payment was successful")
 end
