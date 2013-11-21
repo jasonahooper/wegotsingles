@@ -5,7 +5,6 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    binding.pry
     @customer_json  = Stripe::Customer.create(
       :card => params['stripeToken'],
       :plan => "premium-monthly",
