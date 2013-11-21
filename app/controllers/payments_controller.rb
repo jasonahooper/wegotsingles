@@ -6,9 +6,9 @@ class PaymentsController < ApplicationController
 
   def create
     @customer_json  = Stripe::Customer.create(
-      :card => params[:token],
+      :card => params['stripeToken'],
       :plan => "premium-monthly",
-      :email => params[:email]
+      :email => current_user.email
     )
     @user = current_user
     @user.retrieve_id(@customer_json)

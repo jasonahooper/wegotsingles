@@ -1,5 +1,4 @@
 Feature: Add drinking habits to profile
-
   Scenario: A user adds a frequemcy but not a favourite tipple
     Given That a user is registered
     And he is on the Edit Profile page for his profile
