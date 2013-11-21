@@ -1,15 +1,15 @@
 .profile
-  %h1
-    Edit Profile
+  .profile-header
+    %h1
+      Edit Profile
 
-  .profile-percentage
-    .profile-complete-outer
-      %progress{:value => "#{@profile.progress}", :max => "100"}
+    .profile-percentage
+      .profile-complete-outer
+        %progress{:value => "#{@profile.progress}", :max => "100"}
 
-      %h2
-        Profile Completion:
-        =@profile.progress.to_i
-        percent
+        %h2
+          = surround "Profile Completion:", "%" do
+            = @profile.progress.to_i
 
   #profile-edit
     = form_for @profile, :url => user_profile_path(@profile.user, @profile) do |f|
@@ -17,20 +17,23 @@
         = f.label :occupation
         = f.text_field :occupation
       %fieldset
+        = f.label :ethnicity_ids, "Ethnicity"
         = f.collection_check_boxes :ethnicity_ids, @ethnicities, :id, :ethnicity
       %fieldset.smoking_habits
         = f.label :smoking_habits
         = f.select :smoking_habits, ['Never', 'Sometimes', 'Often'], { include_blank: true }
       %fieldset.star_sign
+        = f.label :star_sign
         = f.select :star_sign, star_signs, { include_blank: true }
         = f.select :star_sign_interest_level, options_for_select(levels_of_interest,  selected = @profile.star_sign_interest_level)
       %fieldset.religion
+        = f.label :religion
         = f.select :religion, religions, { include_blank: true }
         = f.select :religion_interest_level, options_for_select(levels_of_interest, selected = @profile.religion_interest_level)
       %fieldset.drinking_frequency
-        = f.select :drink_frequency, drink_frequencies, { include_blank: true }
         = f.label :favourite_tipple
         = f.text_field :favourite_tipple
+        = f.select :drink_frequency, drink_frequencies, { include_blank: true }
       %fieldset
         = f.label :education
         = f.select :education, @education_options, { include_blank: true }
@@ -49,6 +52,7 @@
         = f.select :imperial_weight, @weight_imperial_options, { include_blank: true }
         = f.hidden_field :imperial_bln_weight
       %fieldset
+        = f.label :language_ids, "Languages"
         = f.collection_check_boxes :language_ids, @languages, :id, :language
       %fieldset
         = f.fields_for :images do |img|

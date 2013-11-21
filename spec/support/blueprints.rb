@@ -15,6 +15,11 @@ User.blueprint do
   confirmed_at { Time.now }
 end
 
+User.blueprint(:with_stripe) do
+  stripe_customer_id { 'cus_2yc1BvwsPNa1Dn' }
+  type { 'Man' }
+end
+
 Profile.blueprint do
   height { 191 }
 end
