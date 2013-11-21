@@ -19,6 +19,31 @@ Profile.blueprint do
   height { 191 }
 end
 
+Profile.blueprint(:without_height) do
+  height { nil }
+end
+
+Profile.blueprint(:without_weight) do
+  height { nil }
+end
+
+
 Profile.blueprint(:imperial) do
 
+end
+
+Image.blueprint do
+
+end
+
+Image.blueprint(:with_file) do
+  image { File.open('spec/fixtures/gary.jpg') }
+end
+
+PaymentOption.blueprint do
+  amount { 1000 }
+  interval { "month" }
+  name { "Premium Monthly" }
+  currency { 'GBP' }
+  code { "premium-monthly" }
 end

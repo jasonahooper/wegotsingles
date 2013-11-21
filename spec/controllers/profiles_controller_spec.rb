@@ -3,9 +3,49 @@ require 'spec_helper'
 describe ProfilesController do
 
   before(:each) do
-    @profile = Profile.make!
     @user = User.make!
-    @user.profile = @profile
+    @profile = @user.profile
+  end
+
+  describe 'Education feature' do
+    before do
+      @education = 1
+    end
+
+    context 'Add education on Profile' do
+      before do
+        @valid_params = { :profile => { :education => @education } }
+
+        patch :update, @valid_params.merge(:id => @profile.id, :user_id => @user.id)
+      end
+
+      it "should store education" do
+        @profile.reload
+        @profile.education.should_not be_nil
+      end
+
+      it "should have the correct education" do
+        @profile.reload
+        @profile.education.should eq(@education)
+      end
+
+    end
+
+    context 'Update education on Profile' do
+      before do
+        @profile.education = @education
+        @profile.save!
+        @valid_params = { :profile => { :education => @education2 } }
+
+        patch :update, @valid_params.merge(:id => @profile.id, :user_id => @user.id)
+      end
+
+      it "should have the new education" do
+        @profile.reload
+        @profile.education.should eq(@education2)
+        @profile.education.should_not eq(@education)
+      end
+    end
   end
 
   describe 'Ethnicity feature' do
@@ -114,7 +154,6 @@ describe ProfilesController do
     end
 
     context "For height with imperial" do
-
       before do
         @valid_params = { :imperial => "true", :imperial_height => 6.2 }
         patch :update, :id => @user.profile.id, :user_id => @user.id, :profile => @valid_params
@@ -131,5 +170,111 @@ describe ProfilesController do
       end
     end
   end
+
+  describe 'Image upload feature' do
+
+    context 'Upload an additional image' do
+      before do
+        @profile.images << Image.make!(:image => "first.jpg")
+        @test_file = 'gary.jpg'
+        file = fixture_file_upload("/" + @test_file,'application/jpg')
+        @valid_params = { :images_attributes => [
+          {:image => file},
+          {:image => file}
+          ] }
+        patch :update, :id => @user.profile.id, :user_id => @user.id,
+          :profile => @valid_params
+      end
+      it 'should save the image to a directory' do
+        new_path = "public/uploads/test/image/#{assigns(:profile).images.last.id}"
+        new_file = "#{new_path}/#{@test_file}"
+        File::exists?(new_file).should eq(true)
+      end
+      it 'should save the thumbnail to a directory' do
+        new_path = "public/uploads/test/image/#{assigns(:profile).images.last.id}"
+        new_file = "#{new_path}/thumb_#{@test_file}"
+        File::exists?(new_file).should eq(true)
+      end
+      it 'should have two profile images' do
+        assigns(:profile).images.count.should eq(3)
+      end
+    end
+
+    context 'Remove the only image' do
+      before do
+        @profile.images << Image.make!(:image => "first.jpg")
+        image_id = @profile.images.first.id
+        @valid_params = { :images_attributes => [ :id => image_id, :_destroy => true ] }
+        patch :update, :id => @user.profile.id, :user_id => @user.id,
+          :profile => @valid_params
+      end
+      it 'should have no profile images' do
+        assigns(:profile).images.count.should eq(0)
+      end
+    end
+
+    context 'Upload an image and remove an image' do
+      before do
+        @profile.images << Image.make!(:image => "first.jpg")
+        image_id = @profile.images.first.id
+        @test_file = 'gary.jpg'
+        file = fixture_file_upload("/" + @test_file,'application/jpg')
+        @valid_params = { :images_attributes => [ { :image => file }, { :id => image_id, :_destroy => true } ] }
+        patch :update, :id => @user.profile.id, :user_id => @user.id,
+          :profile => @valid_params
+      end
+      it 'should save the image to a directory' do
+        new_path = "public/uploads/test/image/#{assigns(:profile).images.last.id}"
+        new_file = "#{new_path}/#{@test_file}"
+        File::exists?(new_file).should eq(true)
+      end
+      it 'should save the thumbnail to a directory' do
+        new_path = "public/uploads/test/image/#{assigns(:profile).images.last.id}"
+        new_file = "#{new_path}/thumb_#{@test_file}"
+        File::exists?(new_file).should eq(true)
+      end
+      it 'should have one profile image' do
+        assigns(:profile).images.count.should eq(1)
+      end
+    end
+  end
+
+    context "For weight feature" do
+      context "For weight with metric" do
+
+        before do
+          @valid_params = { :imperial_bln_weight => "false", :metric_weight => 80 }
+          patch :update, :id => @user.profile.id, :user_id => @user.id, :profile => @valid_params
+        end
+
+        it "the user profile should have the height" do
+          @profile.reload
+          @profile.weight.should_not be_nil
+        end
+
+        it "should have the metric measurement" do
+          @profile.reload
+          @profile.weight.should eq(80)
+        end
+
+      end
+
+      context "For weight with imperial" do
+        before do
+          @valid_params = { :imperial_bln_weight => "true", :imperial_weight => 12.59 }
+          patch :update, :id => @user.profile.id, :user_id => @user.id, :profile => @valid_params
+        end
+
+        it "the user profile should have the height" do
+          @profile.reload
+          @profile.weight.should_not be_nil
+        end
+
+        it "should have the metric measurement" do
+          @profile.reload
+          @profile.weight.should eq(79)
+        end
+      end
+    end
 
 end
