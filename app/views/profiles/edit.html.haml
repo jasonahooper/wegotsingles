@@ -1,5 +1,5 @@
 #profile-edit
-  = form_for user_profile_path(@profile.user, @profile) do |f|
+  = form_for [@profile.user, @profile] do |f|
     %fieldset
       = f.label :occupation
       = f.text_field :occupation
