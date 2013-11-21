@@ -1,93 +1,94 @@
 .profile
   %section.profile-header
     %h1
-      Personal Profile
+      #{@profile.user.username}
 
-    .profile-images
-      %h3 Images
+    %span.actions
+      = link_to 'Edit', edit_user_profile_path(@profile.user, @profile)
+
+  %section.profile-body
+    %section.col.profile-images
+      - if @profile.images.first
+        = image_tag @profile.images.first.image.url
+
       -@profile.images.each do |show|
         .thumbnail-image
           = image_tag show.image.thumb.url
+    %section.col.biography
+      .about-you
+        - if @profile.about_you
+          %h3 About you
+          %p
+            = @profile.about_you.html_safe
 
-    .profile-percentage
-      .profile-complete-outer
-        %progress{:value => "#{@profile.progress}", :max => "100"}
+      .likes-and-dislikes
+        - if @profile.likes_and_dislikes
+          %h3 Likes and dislikes
+          %p
+            = @profile.likes_and_dislikes.html_safe
 
-        %h2
-          Profile Completion:
-          =@profile.progress.to_i
-          percent
+      .looking-for
+        - if @profile.looking_for
+          %h3 Looking for
+          %p
+            = @profile.looking_for.html_safe
 
-  %section.profile-body
-    %section.profile-info
-      .date_of_birth
+    %section.col.profile-info
+      %h2
+        Profile Info
+
+      .fact.date_of_birth
         %h3
           Date of Birth:
           =@profile.user.date_of_birth
 
-      .smoking_habits
+      .fact.smoking_habits
         %h3
           Smoking Habits:
           =@profile.smoking_habits
 
-      .ethnicities
-        %h3 Ethnicity
+      .fact.ethnicities
+        %h3 Ethnicity:
         %ul
           -@profile.ethnicities.each do |ethnicity|
             %li
               = ethnicity.ethnicity
 
-      .weight
-        %h3 Weight
+      .fact.weight
+        %h3 Weight:
         - if @profile.weight
-          %p="#{@profile.weight} kgs"
-          %p="#{imperial_weight_show(@profile).first} st #{imperial_weight_show(@profile).last} pounds"
+          #{@profile.weight} kgs
+          = surround '(', ')' do
+            #{imperial_weight_show(@profile).first} st #{imperial_weight_show(@profile).last} pounds
 
-      .height
-        %h3 Height
+      .fact.height
+        %h3 Height:
         - if @profile.height
-          %p="#{@profile.height} cms"
-          %p="#{imperial_height_show(@profile).first} ft #{imperial_height_show(@profile).last} inches"
+          #{@profile.height} cms
+          = surround '(', ')' do
+            #{imperial_height_show(@profile).first} ft #{imperial_height_show(@profile).last} inches
 
-      .education
+      .fact.education
         - if @profile.education
           %h3 Education: #{retreive_education(@profile.education)}
 
-      .occupation
+      .fact.occupation
         %h3 Occupation: #{@profile.occupation}
 
-      .starsign
+      .fact.starsign
         %h3 Star-sign: #{@profile.star_sign}, and I'm #{level_of_interest(@profile.star_sign_interest_level)}
 
-      .religion
+      .fact.religion
         %h3 Religion: #{@profile.religion}, and I'm #{level_of_interest(@profile.religion_interest_level)}
 
-      .drinkfrequency
-        %h3 Drinks #{@profile.drink_frequency}
+      .fact.drink-frequency
+        %h3 Drinks: #{@profile.drink_frequency}
+
+      .fact.favourite-tipple
         - if @profile.favourite_tipple
-          %h3 Likes to drink #{@profile.favourite_tipple}
+          %h3 Likes to drink: #{@profile.favourite_tipple}
 
-      .languages
-        %h3 Languages
-        %ul
-          -@profile.languages.each do |language|
-            %li
-              = language.language
-    %section.biography
-      .about-you
-      - if @profile.about_you
-        %h3 About you
-        = @profile.about_you.html_safe
+      .fact.languages
+        %h3 Languages: #{@profile.languages.map{|l| l.language}.join(',')}
 
-      .likes-and-dislikes
-      - if @profile.likes_and_dislikes
-        %h3 Likes and dislikes
-        = @profile.likes_and_dislikes.html_safe
-
-      .looking-for
-      - if @profile.looking_for
-        %h3 Looking for
-        = @profile.looking_for.html_safe
-
-  .actions
-    = link_to 'Edit', edit_user_profile_path(@profile.user, @profile)
+.clear
