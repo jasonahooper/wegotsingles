@@ -18,7 +18,8 @@
     .flash.alert
       =flash[:alert]
   %nav
-    %h1#main-logo= "We Got Singles"
+    %h1#main-logo
+      = link_to "We Got Singles", root_path
 
     .nav-links
       %ol
