@@ -8,8 +8,8 @@
 
   %section.profile-body
     %section.col.profile-images
-      - if @profile.images.first
-        = image_tag @profile.images.first.image.url
+      - if @profile.main_image
+        = image_tag @profile.main_image.image.url, :id => "main_image"
 
       -@profile.images.each do |show|
         .thumbnail-image
