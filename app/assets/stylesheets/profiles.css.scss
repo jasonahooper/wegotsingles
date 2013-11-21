@@ -3,9 +3,13 @@
 .profile {
   .profile-header {
     h1 {
-      display: inline;
+      display: inline-block;
       font-size: 2em;
       margin-bottom: 1em;
+    }
+
+    .actions {
+      line-height: 2em;
     }
   }
 

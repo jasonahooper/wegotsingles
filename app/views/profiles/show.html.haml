@@ -3,17 +3,8 @@
     %h1
       #{@profile.user.username}
 
-    .actions
+    %span.actions
       = link_to 'Edit', edit_user_profile_path(@profile.user, @profile)
-
-    .profile-percentage
-      .profile-complete-outer
-        %progress{:value => "#{@profile.progress}", :max => "100"}
-
-        %h2
-          Profile Completion:
-          =@profile.progress.to_i
-          percent
 
   %section.profile-body
     %section.col.profile-images
