@@ -11,7 +11,7 @@ describe Profile do
     before do
       @profile = Profile.make!(:without_height)
       @number_of_attributes = Profile.progress_attributes.count
-      @percentage = 80 / @number_of_attributes 
+      @percentage = 80.0 / @number_of_attributes 
       @profile.occupation = "Coder"
       @profile.save!
     end
