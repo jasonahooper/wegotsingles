@@ -12,7 +12,6 @@ Given(/^he selects one of those images as his profile image$/) do
 end
 
 Then(/^he sees the selected image on the profile page as his profile image$/) do
-  save_and_open_page
   assert find("#main_image")
 end
 
