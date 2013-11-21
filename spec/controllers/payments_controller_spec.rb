@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe PaymentsController do
   context "logged in user" do
-    
-    before do 
+
+    before do
       @user = User.make!
-      sign_in @user     
+      sign_in @user
     end
 
     describe "creating a stripe customer on create" do
@@ -37,7 +37,26 @@ describe PaymentsController do
       end
 
       it "should set the customer stripe id" do
-        @user.reload.stripe_customer_id.should eq("cus_2yc1BvwsPNa1Dn")      
+        @user.reload.stripe_customer_id.should eq("cus_2yc1BvwsPNa1Dn")
+      end
+    end
+
+    describe 'cancelling a customer account' do
+      before do
+        @user.stripe_customer_id = 'cus_2yc1BvwsPNa1Dn'
+        @user.save!
+
+        mock_customer = mock
+        mock_customer.stubs(:cancel_subscription)
+        Stripe::Customer.expects(:retrieve).with('cus_2yc1BvwsPNa1Dn').
+          returns(mock_customer)
+
+        delete :destroy
+      end
+
+      it 'should reset the customer_stripe_id' do
+        @user.reload
+        @user.stripe_customer_id.should be_nil
       end
     end
   end
