@@ -15,6 +15,7 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'stripe'
 gem 'tinymce-rails'
+gem "fog"
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
