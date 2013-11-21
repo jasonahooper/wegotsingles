@@ -16,8 +16,8 @@ class Profile < ActiveRecord::Base
     @number_of_attributes = Profile.progress_attributes.count
     filled_array_values = Profile.progress_attributes.select { |x| self.send(x).blank? == false }
     number_of_filled_values = filled_array_values.count
-    percentage = 80 / @number_of_attributes 
-    total_percentage = number_of_filled_values * percentage
+    percentage = 80.0 / @number_of_attributes 
+    total_percentage = number_of_filled_values.to_f * percentage
     self.progress = total_percentage
   end
 
