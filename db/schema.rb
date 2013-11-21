@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119204257) do
+ActiveRecord::Schema.define(version: 20131120203416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20131119204257) do
 
   create_table "languages", force: true do |t|
     t.string   "language"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payment_options", force: true do |t|
+    t.integer  "amount"
+    t.string   "interval"
+    t.string   "name"
+    t.string   "currency"
+    t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -53,6 +63,13 @@ ActiveRecord::Schema.define(version: 20131119204257) do
     t.integer  "star_sign_interest_level"
     t.string   "drink_frequency"
     t.string   "favourite_tipple"
+    t.integer  "weight"
+    t.integer  "education"
+    t.text     "about_you"
+    t.text     "likes_and_dislikes"
+    t.text     "looking_for"
+    t.string   "religion"
+    t.integer  "religion_interest_level"
   end
 
   create_table "users", force: true do |t|
@@ -76,6 +93,7 @@ ActiveRecord::Schema.define(version: 20131119204257) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "stripe_customer_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
