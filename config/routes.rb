@@ -17,4 +17,5 @@ Wegotsingles::Application.routes.draw do
 
   resources :payments, :only => [:create, :new]
   get "payments/welcome"
+  delete "payments/destroy"
 end
