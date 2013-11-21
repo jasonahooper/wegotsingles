@@ -1,15 +1,15 @@
 .profile
-  %h1
-    Edit Profile
+  .profile-header
+    %h1
+      Edit Profile
 
-  .profile-percentage
-    .profile-complete-outer
-      %progress{:value => "#{@profile.progress}", :max => "100"}
+    .profile-percentage
+      .profile-complete-outer
+        %progress{:value => "#{@profile.progress}", :max => "100"}
 
-      %h2
-        Profile Completion:
-        =@profile.progress.to_i
-        percent
+        %h2
+          = surround "Profile Completion:", "%" do
+            = @profile.progress.to_i
 
   #profile-edit
     = form_for @profile, :url => user_profile_path(@profile.user, @profile) do |f|
