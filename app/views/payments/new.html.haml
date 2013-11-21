@@ -1,24 +1,31 @@
-=form_tag(payments_path, :id => "payment-form") do 
-  %span.payment-errors
-  
-  .form-row
-    =label_tag :card_number, "Card Number"
-    =text_field_tag :card_number, nil, :data => {:stripe => "number"}
-  
-  .form-row
-    =label_tag :cvc, "CVC"
-    =text_field_tag :cvc, nil, :data => {:stripe=>"cvc"}
-  
-  .form-row
-    =label_tag :expiration, "Expiration (MM/YYYY)"
-    =text_field_tag :expiry_month, nil, :data => {:stripe => "exp-month"}
-    =text_field_tag :expiry_year, nil, :data => {:stripe=>"exp-year"}
+.checkout
+  %h1
+    Checkout
 
-  =hidden_field_tag("stripeToken")
+  %p.pitch
+    Join Now! Send messages to other premium members for only £10.00 a month!
 
-  =submit_tag("Submit Payment")
+  =form_tag(payments_path, :id => "payment-form") do
+    %span.payment-errors
 
-=javascript_tag nil, {:type => "text/javascript", :src =>"https://js.stripe.com/v2/"}
+    .form-row
+      =label_tag :card_number, "Card Number"
+      =text_field_tag :card_number, nil, :data => {:stripe => "number"}
 
-:javascript
-  Stripe.setPublishableKey('pk_test_QZ6J7qOKcnLpRsnQtXQEzOSd');
+    .form-row
+      =label_tag :cvc, "CVC"
+      =text_field_tag :cvc, nil, :data => {:stripe=>"cvc"}
+
+    .form-row
+      =label_tag :expiration, "Expiration (MM/YYYY)"
+      =text_field_tag :expiry_month, nil, :data => {:stripe => "exp-month"}
+      =text_field_tag :expiry_year, nil, :data => {:stripe=>"exp-year"}
+
+    =hidden_field_tag("stripeToken")
+
+    =submit_tag("Submit Payment")
+
+  =javascript_tag nil, {:type => "text/javascript", :src =>"https://js.stripe.com/v2/"}
+
+  :javascript
+    Stripe.setPublishableKey('pk_test_QZ6J7qOKcnLpRsnQtXQEzOSd');
