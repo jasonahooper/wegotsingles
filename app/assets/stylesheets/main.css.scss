@@ -9,6 +9,7 @@ html, body {
 body {
   @include body-gradient;
   @include main-font;
+  background-attachment: fixed;
 }
 
 #content {
