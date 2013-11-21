@@ -48,6 +48,9 @@
 %p
   Unhappy?
   = button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
+%p
+  - if current_user.stripe_customer_id && current_user.type == 'Man'
+    = button_to "Cancel my subscription", payments_path, :data => { :confirm => "Are you sure?" }, :method => :delete
 
 = link_to "Back", :back
 
