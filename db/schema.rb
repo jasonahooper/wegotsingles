@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120203416) do
+ActiveRecord::Schema.define(version: 20131121122538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,29 +63,21 @@ ActiveRecord::Schema.define(version: 20131120203416) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-<<<<<<< HEAD
     t.string   "smoking_habits"
-=======
->>>>>>> 67484b55575838cf7500d467a0ff2a5736e504b9
     t.integer  "height"
     t.string   "occupation"
     t.string   "star_sign"
     t.integer  "star_sign_interest_level"
-<<<<<<< HEAD
     t.string   "drink_frequency"
     t.string   "favourite_tipple"
-=======
-    t.string   "smoking_habits"
     t.integer  "weight"
-    t.string   "drink_frequency"
-    t.string   "favourite_tipple"
     t.integer  "education"
     t.text     "about_you"
     t.text     "likes_and_dislikes"
     t.text     "looking_for"
     t.string   "religion"
     t.integer  "religion_interest_level"
->>>>>>> 67484b55575838cf7500d467a0ff2a5736e504b9
+    t.float    "progress"
   end
 
   create_table "users", force: true do |t|
