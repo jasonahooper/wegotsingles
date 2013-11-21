@@ -7,12 +7,7 @@ $(document).ready(function() {
     // Disable the submit button to prevent repeated clicks
     $form.find('button').prop('disabled', true);
 
-    // if ($('body').data("env") === "test"){
-    //   stripeResponseHandler(200, {id: "DummyToken"});
-    // }
-    // else {
       Stripe.card.createToken($form, stripeResponseHandler);
-    // }
 
     // Prevent the form from submitting with the default action
     return false;
@@ -20,11 +15,13 @@ $(document).ready(function() {
 });
 
 function stripeResponseHandler(status, response){
-  var $form = $('#payment-form');
+  // Clears users card data before submitting
   $('#card_number').val("");
   $('#cvc').val("");
   $('#expiry_month').val("");
   $('#expiry_year').val("");
+  
+  var $form = $('#payment-form');
   if (response.error) {
     // Show the errors on the form
     $form.find('.payment-errors').text(response.error.message);
