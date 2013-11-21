@@ -173,35 +173,15 @@ describe ProfilesController do
 
   describe 'Image upload feature' do
 
-    context 'Upload the first image' do
-      before do
-        @test_file = 'gary.jpg'
-        file = fixture_file_upload("/" + @test_file,'application/jpg')
-        @valid_params = { :images_attributes => [ :image => file ] }
-        patch :update, :id => @user.profile.id, :user_id => @user.id,
-          :profile => @valid_params
-      end
-      it 'should save the image to a directory' do
-        new_path = "public/uploads/image/image/#{assigns(:profile).images.last.id}"
-        new_file = "#{new_path}/#{@test_file}"
-        File::exists?(new_file).should eq(true)
-      end
-      it 'should save the thumbnail to a directory' do
-        new_path = "public/uploads/image/image/#{assigns(:profile).images.last.id}"
-        new_file = "#{new_path}/thumb_#{@test_file}"
-        File::exists?(new_file).should eq(true)
-      end
-      it 'should have one profile image' do
-        assigns(:profile).images.count.should eq(1)
-      end
-    end
-
     context 'Upload an additional image' do
       before do
         @profile.images << Image.make!(:image => "first.jpg")
         @test_file = 'gary.jpg'
         file = fixture_file_upload("/" + @test_file,'application/jpg')
-        @valid_params = { :images_attributes => [ :image => file ] }
+        @valid_params = { :images_attributes => [
+          {:image => file},
+          {:image => file}
+          ] }
         patch :update, :id => @user.profile.id, :user_id => @user.id,
           :profile => @valid_params
       end
@@ -216,7 +196,7 @@ describe ProfilesController do
         File::exists?(new_file).should eq(true)
       end
       it 'should have two profile images' do
-        assigns(:profile).images.count.should eq(2)
+        assigns(:profile).images.count.should eq(3)
       end
     end
 
@@ -230,20 +210,6 @@ describe ProfilesController do
       end
       it 'should have no profile images' do
         assigns(:profile).images.count.should eq(0)
-      end
-    end
-
-    context 'Remove one of two images' do
-      before do
-        @profile.images << Image.make!(:image => "first.jpg")
-        @profile.images << Image.make!(:image => "second.jpg")
-        image_id = @profile.images.first.id
-        @valid_params = { :images_attributes => [ :id => image_id, :_destroy => true ] }
-        patch :update, :id => @user.profile.id, :user_id => @user.id,
-          :profile => @valid_params
-      end
-      it 'should have one profile images' do
-        assigns(:profile).images.count.should eq(1)
       end
     end
 

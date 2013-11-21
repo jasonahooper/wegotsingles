@@ -7,7 +7,7 @@ Then(/^he will see alt "(.*?)"$/) do |alt|
 end
 
 Given(/^he has a profile with an image$/) do
-  @user.profile.images << Image.new(:image => "first.jpg")
+  @user.profile.images << Image.make!(:with_file)
 end
 
 Then(/^he will see "(.*?)" image(?:|s)$/) do |count|

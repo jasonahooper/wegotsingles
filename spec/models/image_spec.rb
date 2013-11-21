@@ -7,6 +7,7 @@ describe Image do
 
   describe 'Image resizing' do
     before do
+      ImageUploader.enable_processing = true
       @image = Image.make!(:with_file)
     end
 
@@ -20,6 +21,10 @@ describe Image do
 
     it "should scale down an image to fit within 400 by 400 pixels" do
       @image.image.gallery.should be_no_larger_than(400, 400)
+    end
+
+    after do
+      ImageUploader.enable_processing = false
     end
   end
 end

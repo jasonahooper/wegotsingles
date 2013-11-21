@@ -9,7 +9,7 @@ Feature: Add images to profile
     And he click the "Save" button
     Then he will see "1" image
     And he will see alt "Thumb gary"
-@wip
+
   Scenario: A user adds an additional image to their profile
     Given he has a profile with an image
     When he selects the image file "gary.jpg"
