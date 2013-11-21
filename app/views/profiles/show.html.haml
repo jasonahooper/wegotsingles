@@ -1,6 +1,19 @@
 %h1
   Personal Profile
 
+#profile-complete-outer
+  %progress{:value => "#{@profile.progress}", :max => "100"}
+
+%br
+
+#profile-percentage
+  %h2
+    Profile Completion: 
+    =@profile.progress.to_i
+    percent
+
+%br
+
 #profile-show
   #profile.date_of_birth
     %h3

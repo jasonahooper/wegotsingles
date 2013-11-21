@@ -1,4 +1,5 @@
 Feature: Premium Membership
+
   Scenario: A man pays for a monthly subscription
     Given that a man has registered
     And he enters signs in
