@@ -15,7 +15,6 @@ Then(/^I select (\d+) cm as my height$/) do |height|
 end
 
 Then(/^I see my height on the profile as metric "(.*?)" and imperial "(.*?)"$/) do |metric, imperial|
-    save_and_open_page
     assert page.find('#content').should have_content metric
     assert page.find('#content').should have_content imperial
 end
