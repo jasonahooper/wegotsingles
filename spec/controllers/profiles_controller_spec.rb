@@ -186,12 +186,12 @@ describe ProfilesController do
           :profile => @valid_params
       end
       it 'should save the image to a directory' do
-        new_path = "public/uploads/image/image/#{assigns(:profile).images.last.id}"
+        new_path = "public/uploads/test/image/#{assigns(:profile).images.last.id}"
         new_file = "#{new_path}/#{@test_file}"
         File::exists?(new_file).should eq(true)
       end
       it 'should save the thumbnail to a directory' do
-        new_path = "public/uploads/image/image/#{assigns(:profile).images.last.id}"
+        new_path = "public/uploads/test/image/#{assigns(:profile).images.last.id}"
         new_file = "#{new_path}/thumb_#{@test_file}"
         File::exists?(new_file).should eq(true)
       end
@@ -224,12 +224,12 @@ describe ProfilesController do
           :profile => @valid_params
       end
       it 'should save the image to a directory' do
-        new_path = "public/uploads/image/image/#{assigns(:profile).images.last.id}"
+        new_path = "public/uploads/test/image/#{assigns(:profile).images.last.id}"
         new_file = "#{new_path}/#{@test_file}"
         File::exists?(new_file).should eq(true)
       end
       it 'should save the thumbnail to a directory' do
-        new_path = "public/uploads/image/image/#{assigns(:profile).images.last.id}"
+        new_path = "public/uploads/test/image/#{assigns(:profile).images.last.id}"
         new_file = "#{new_path}/thumb_#{@test_file}"
         File::exists?(new_file).should eq(true)
       end
