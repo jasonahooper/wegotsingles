@@ -14,14 +14,17 @@ describe Profile do
       @profile = Profile.make!(:without_height)
       @number_of_attributes = Profile.progress_attributes.count
       @percentage = 80.0 / @number_of_attributes 
-      @profile.occupation = "Coder"
       @profile.save!
     end
 
-    context "with one attribute" do
+    context "with an image" do
+      before do
+        @profile.images << Image.make!
+        @profile.save!
+      end
 
-      it "should show some progress" do
-        @profile.progress.should eq(@percentage)
+      it "should set profile progress to 20" do
+        @profile.progress.should eq(20)
       end
     end
 
@@ -32,7 +35,7 @@ describe Profile do
       end
 
       it "should show that the progress has incremented" do
-        @profile.progress.should eq(@percentage*2)
+        @profile.progress.should eq(@percentage)
       end
     end
 
