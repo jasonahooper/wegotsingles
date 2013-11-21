@@ -1,5 +1,5 @@
 #profile-edit
-  = form_for [@profile.user, @profile] do |f|
+  = form_for @profile, :url => user_profile_path(@profile.user, @profile) do |f|
     %fieldset
       = f.label :occupation
       = f.text_field :occupation
@@ -37,6 +37,18 @@
       = f.hidden_field :imperial_bln_weight
     %fieldset
       = f.collection_check_boxes :language_ids, @languages, :id, :language
+    %fieldset
+      = f.fields_for :images do |img|
+        .profile-image-fields
+          - if img.object.new_record?
+            = img.label :image
+            = img.file_field :image
+          - else
+            .thumbnail-image
+              = image_tag img.object.image.thumb.url
+            .thumbnail-check
+              = img.check_box :_destroy
+              Delete
     %fieldset
       = f.label :about_you
       = f.text_area :about_you, :class => "tinymce", :rows => 5, :cols => 5

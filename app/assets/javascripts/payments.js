@@ -1,6 +1,6 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
-jQuery(function($) {
+$(document).ready(function() {
   $('#payment-form').submit(function(event) {
     var $form = $(this);
 
@@ -15,8 +15,13 @@ jQuery(function($) {
 });
 
 function stripeResponseHandler(status, response){
+  // Clears users card data before submitting
+  $('#card_number').val("");
+  $('#cvc').val("");
+  $('#expiry_month').val("");
+  $('#expiry_year').val("");
+  
   var $form = $('#payment-form');
-
   if (response.error) {
     // Show the errors on the form
     $form.find('.payment-errors').text(response.error.message);

@@ -69,6 +69,12 @@
         %li
           = language.language
 
+  %section#profile-images
+    %h3 Images
+    -@profile.images.each do |show|
+      .thumbnail-image
+        = image_tag show.image.thumb.url
+
   %section.biography
     #profile-about-you
     - if @profile.about_you

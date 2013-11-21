@@ -32,6 +32,14 @@ Profile.blueprint(:imperial) do
 
 end
 
+Image.blueprint do
+
+end
+
+Image.blueprint(:with_file) do
+  image { File.open('spec/fixtures/gary.jpg') }
+end
+
 PaymentOption.blueprint do
   amount { 1000 }
   interval { "month" }

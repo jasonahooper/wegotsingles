@@ -1,6 +1,5 @@
 Feature: Adds religion feature
 
-  @wip
   Scenario: A user adds his religion to their profile
     Given That a user is registered
     And he is on the Edit Profile page for his profile

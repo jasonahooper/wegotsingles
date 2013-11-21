@@ -4,6 +4,8 @@ class Profile < ActiveRecord::Base
   has_many :ethnicities, :through => :profile_ethnicities
   has_many :profile_languages
   has_many :languages, :through => :profile_languages
+  has_many :images
+  accepts_nested_attributes_for :images, :allow_destroy => true
 
   attr_accessor :string_education, :imperial, :imperial_bln_weight, :metric_height, :imperial_height, :imperial_weight, :metric_weight
 

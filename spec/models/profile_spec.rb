@@ -6,6 +6,8 @@ describe Profile do
   it { should have_many(:ethnicities).through(:profile_ethnicities) }
   it { should have_many(:profile_languages) }
   it { should have_many(:languages).through(:profile_languages)}
+  it { should have_many(:images) }
+  it { should accept_nested_attributes_for(:images) }
 
   describe "profile progress" do
     before do
@@ -80,7 +82,6 @@ describe Profile do
         @profile.height.should eq(188)
       end
     end
-
   end
 
   describe "Weight conversion" do
@@ -116,5 +117,4 @@ describe Profile do
     end
 
   end
-
 end
