@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121122538) do
+ActiveRecord::Schema.define(version: 20131121180952) do
 
   create_table "ethnicities", force: true do |t|
     t.string   "ethnicity"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20131121122538) do
     t.string   "religion"
     t.integer  "religion_interest_level"
     t.float    "progress"
+    t.integer  "main_image_id"
   end
 
   create_table "users", force: true do |t|
