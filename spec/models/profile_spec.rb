@@ -7,6 +7,48 @@ describe Profile do
   it { should have_many(:profile_languages) }
   it { should have_many(:languages).through(:profile_languages)}
 
+  describe "profile progress" do
+    before do
+      @profile = Profile.make!(:without_height)
+      @number_of_attributes = Profile.progress_attributes.count
+      @percentage = 80 / @number_of_attributes 
+      @profile.occupation = "Coder"
+      @profile.save!
+    end
+
+    context "with one attribute" do
+
+      it "should show some progress" do
+        @profile.progress.should eq(@percentage)
+      end
+    end
+
+    context "update profile should return new progress" do
+      before do
+        @profile.education = "University"
+        @profile.save!
+      end
+
+      it "should show that the progress has incremented" do
+        @profile.progress.should eq(@percentage*2)
+      end
+    end
+
+    context "removing an attribute" do
+      before do
+        @profile.education = "University"
+        @profile.save!
+        @profile.occupation = ""
+        @profile.education = nil
+        @profile.save!
+      end
+
+      it "should deincrement the progress meter" do
+        @profile.progress.should eq(0)
+      end
+    end
+  end
+
   describe "height conversion" do
     context "with imperial measurments" do
       before do

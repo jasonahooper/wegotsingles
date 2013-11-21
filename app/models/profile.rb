@@ -7,6 +7,20 @@ class Profile < ActiveRecord::Base
 
   attr_accessor :string_education, :imperial, :imperial_bln_weight, :metric_height, :imperial_height, :imperial_weight, :metric_weight
 
+  before_save :calculate_progress 
+  def self.progress_attributes
+    [:occupation, :smoking_habits, :height, :star_sign, :drink_frequency, :favourite_tipple, :weight, :education, :about_you, :likes_and_dislikes, :looking_for, :religion]
+  end
+
+  def calculate_progress
+    @number_of_attributes = Profile.progress_attributes.count
+    filled_array_values = Profile.progress_attributes.select { |x| self.send(x).blank? == false }
+    number_of_filled_values = filled_array_values.count
+    percentage = 80 / @number_of_attributes 
+    total_percentage = number_of_filled_values * percentage
+    self.progress = total_percentage
+  end
+
   def metric_to_imperial_height_conversion(height)
     height.centimeter.to_feet.to_f.round(1)
   end

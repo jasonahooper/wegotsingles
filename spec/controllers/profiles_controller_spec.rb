@@ -8,6 +8,7 @@ describe ProfilesController do
     @user.profile = @profile
   end
 
+
   describe 'Education feature' do
     before do
       @education = 1
