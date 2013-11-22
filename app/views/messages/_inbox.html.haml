@@ -5,7 +5,7 @@
   - @user.received_messages.each do |m|
     %ul
       %li
-        = m.subject
+        = link_to m.subject, message_path(m)
       %li
         = m.body
       %li

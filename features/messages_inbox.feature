@@ -6,7 +6,6 @@ Feature: Inbox
     And has previous messages received
     Then He is on the messages dashboard
 
-  @wip
   Scenario: A user reads his messages
     Then he sees all the messages that has in his inbox
     And he reads a message subject from sally that says "Hellou"
