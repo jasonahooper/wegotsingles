@@ -36,5 +36,24 @@ describe MessagesController do
         @john.reload.sent_messages.first.subject.should include(@valid_params[:message][:subject])
       end
     end
+
+    context "reading a message" do
+      render_views
+      before do
+        @message = Message.make!(:subject => "Hellou", :body => "Monkeys all the way")
+        @john.received_messages << @message
+
+        get :show, :id => @message.id
+      end
+
+      it "should have a sucess response" do
+        expect(response).to be_success
+      end
+
+      it "should see a full body for the message" do
+        expect(response.body).to match(/#{@message.body}/)
+      end
+
+    end
   end
 end
