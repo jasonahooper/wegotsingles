@@ -92,9 +92,9 @@ class Profile < ActiveRecord::Base
   end
 
   def matches
-    self.user.type == "Man" ? seeking = "Woman" : seeking = "Man"
-    self.looking_for ? search_term = self.looking_for : search_term = self.about_you
-    Profile.search "\"#{search_term}\"/1 @sex #{seeking}"
+    seeking = self.user.type == "Man" ? "Woman" : "Man"
+    search_term = "#{self.looking_for} #{self.likes_and_dislikes} #{self.about_you}".strip
+    Profile.search "\"#{search_term}\"/1", :conditions => { :sex => seeking }
   end
 
   def self.progress_attributes
