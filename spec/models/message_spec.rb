@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Message do
   it { should belong_to(:to) }
   it { should belong_to(:from) }
+  it { should belong_to(:reply) }
 
 
   describe "Sending a message" do
