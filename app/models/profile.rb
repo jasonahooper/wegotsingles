@@ -48,18 +48,6 @@ class Profile < ActiveRecord::Base
     kilograms.to_i.round(1)
   end
 
-  def imperial_height_show
-    h = BigDecimal.new(self.imperial_height, 3)
-    feet, inches = h.fix.to_i, (h.frac*10).to_i
-    return [feet, inches]
-  end
-
-  def imperial_weight_show
-    w = BigDecimal.new(self.imperial_weight, 3)
-    stones, pounds = w.fix.to_i, (w.frac*10).to_i
-    return [stones, pounds]
-  end
-
   def imperial_height=(height)
     if self.imperial == "true"
       write_attribute(:height, imperial_to_metric_height_conversion(height))

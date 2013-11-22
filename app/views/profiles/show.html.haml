@@ -91,7 +91,7 @@
 
       .fact.languages
         %h3 Languages: #{@profile.languages.map{|l| l.language}.join(',')}
-
-  =render :partial => "messages/new_message"
+  -if user_signed_in?
+    =render :partial => "messages/new_message"
 
 .clear

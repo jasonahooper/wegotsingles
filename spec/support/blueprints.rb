@@ -10,7 +10,7 @@ end
 
 User.blueprint do
   first_name { "John" }
-  email { Faker::Internet.email }
+  email { "john.smith@email.com" }
   password { 'password' }
   confirmed_at { Time.now }
 end
@@ -61,7 +61,8 @@ PaymentOption.blueprint do
 end
 
 Message.blueprint do
-  
+  subject { }
+  body {  }
 end
 
 Message.blueprint(:from_man) do
@@ -70,7 +71,7 @@ Message.blueprint(:from_man) do
 end
 
 Message.blueprint(:from_woman) do
-  subject { "I'm a woman!" } 
+  subject { "I'm a woman!" }
   body { "Horses!" }
 end
 
@@ -79,5 +80,3 @@ end
 
 Woman.blueprint do
 end
-
-

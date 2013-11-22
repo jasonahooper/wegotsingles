@@ -14,8 +14,9 @@ Wegotsingles::Application.routes.draw do
 
     resources :profiles, :only => [:show, :update, :edit]
   end
+
   resources :messages, :only => [:create, :new, :show, :index]
-  resources :payments, :only => [:create, :new ]
+  resources :payments, :only => [:create, :new]
   delete 'payments', :to => 'payments#destroy', :as => 'payment'
   get "payments/welcome"
 end

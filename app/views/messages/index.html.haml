@@ -1,8 +1,4 @@
-%h2
-  All messages
 
-  .messages
-    - @messages.each do |m|
-      =m.subject
-      =m.body
-      %br
+= render :partial => 'inbox', :locals => { :user => @user }
+= render :partial => 'sent_messages', :locals => { :user => @user }
+
