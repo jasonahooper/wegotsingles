@@ -4,6 +4,11 @@ class MessagesController < ApplicationController
     @user = current_user
   end
 
+  def new
+    @message = Message.new
+    @user = current_user
+  end
+
   def show
     @message = Message.find(params[:id])
     @reply = Message.new(:reply_id => @message)

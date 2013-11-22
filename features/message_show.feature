@@ -5,7 +5,7 @@ Feature: Show message
     And I am logged in
     And has previous messages received
     Then He is on the messages dashboard
-
+ 
   Scenario: Sees full body message
     Given that he clicks on a message subject
     Then he sees the subject on the page "Hellou"
