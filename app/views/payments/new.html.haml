@@ -23,7 +23,7 @@
 
     =hidden_field_tag("stripeToken")
 
-    =submit_tag("Submit Payment")
+    = submit_tag "Submit Payment", :class => 'button'
 
   =javascript_tag nil, {:type => "text/javascript", :src =>"https://js.stripe.com/v2/"}
 
