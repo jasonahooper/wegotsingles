@@ -1,0 +1,7 @@
+#results
+  %ul
+    - @results.each do |match|
+      %li
+        %h3
+          = match.user.first_name
+          = link_to "My Profile", profile_user_path(match.user.id)

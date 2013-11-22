@@ -2,3 +2,5 @@ development:
   mysql41: 9306
 test:
   mysql41: 9307
+  enable_star: 1
+  min_inflix_len: 1

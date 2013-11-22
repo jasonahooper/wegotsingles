@@ -1,21 +1,20 @@
 require 'machinist/active_record'
 
 Woman.blueprint do
+  first_name { Faker::Name.first_name }
   email { Faker::Internet.email }
   profile { Profile.make! } 
 end
 
-Profile.blueprint do
-  height { 191 }
-  about_you { Faker::Lorem.words(num =  50).join(' ') }
-end
 
 Woman.blueprint(:miss_right) do
+  first_name { "Miss Right" }
   email { Faker::Internet.email }
   profile { Profile.make!(:miss_right) }
 end
 
 Man.blueprint(:mr_right) do
+  first_name { "Mr Right" }
   email { Faker::Internet.email }
   password { "password" }
   profile { Profile.make!(:mr_right) }
@@ -23,11 +22,11 @@ Man.blueprint(:mr_right) do
 end
 
 Profile.blueprint(:mr_right) do
-  about_you { "I like horses and football and" }
+  looking_for { "A Woman that likes football and horses"}
 end
 
 Profile.blueprint(:miss_right) do
-  about_you { "horses, football" }
+  about_you { "I like horses and football" }
 end
 
 Man.blueprint do
@@ -36,6 +35,10 @@ end
 
 Ethnicity.blueprint do
 
+end
+
+Profile.blueprint do
+  height { 191 }
 end
 
 Language.blueprint do
@@ -48,7 +51,6 @@ User.blueprint do
   password { 'password' }
   confirmed_at { Time.now }
 end
-
 
 User.blueprint(:with_stripe) do
   stripe_customer_id { 'cus_2yc1BvwsPNa1Dn' }

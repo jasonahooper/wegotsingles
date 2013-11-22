@@ -25,9 +25,24 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
+  def results
+    current_user.type == "Man" ? seeking = "Woman" : seeking = "Man"
+    if current_user.profile.looking_for
+      @results = Profile.search "\"#{current_user.profile.looking_for}\"/1 @sex #{seeking}"
+    elsif current_user.profile.about_you
+      @results = Profile.search "\"#{current_user.profile.about_you}\"/1 @sex #{seeking}"
+    else
+      @results = Profile.search " ", :condition => {:sex => seeking }
+    end
+  end
+
   private
   def profile_params
-    params.require(:profile).permit(:religion, :religion_interest_level, :about_you, :likes_and_dislikes, :looking_for, :education, :favourite_tipple, :drink_frequency, :smoking_habits, :star_sign, :star_sign_interest_level, :occupation, :imperial, :height, :metric_height, :imperial_height, :imperial_bln_weight, :weight, :metric_weight, :imperial_weight, :images_attributes => [ :image, :id,
-          :_destroy, :remove_image ],  :ethnicity_ids => [], :language_ids => [])
+    params.require(:profile).permit(:religion, :religion_interest_level, :about_you, 
+      :likes_and_dislikes, :looking_for, :education, :favourite_tipple, :drink_frequency, 
+      :smoking_habits, :star_sign, :star_sign_interest_level, :occupation, :imperial, :height, 
+      :metric_height, :imperial_height, :imperial_bln_weight, :weight, :metric_weight, 
+      :imperial_weight, :images_attributes => [ :image, :id, :_destroy, :remove_image ],  
+      :ethnicity_ids => [], :language_ids => [])
   end
 end
