@@ -10,9 +10,6 @@ class Profile < ActiveRecord::Base
   attr_accessor :string_education, :imperial, :imperial_bln_weight, :metric_height, :imperial_height, :imperial_weight, :metric_weight
 
   before_save :calculate_progress
-  def self.progress_attributes
-    [:occupation, :smoking_habits, :height, :star_sign, :drink_frequency, :favourite_tipple, :weight, :education, :about_you, :likes_and_dislikes, :looking_for, :religion]
-  end
 
   def calculate_progress
     @number_of_attributes = Profile.progress_attributes.count
@@ -105,8 +102,17 @@ class Profile < ActiveRecord::Base
     read_attribute :weight
   end
 
+  def matches
+    self.user.type == "Man" ? seeking = "Woman" : seeking = "Man"
+    self.looking_for ? search_term = self.looking_for : search_term = self.about_you
+    Profile.search "\"#{search_term}\"/1 @sex #{seeking}"
+  end
+
+  def self.progress_attributes
+    [:occupation, :smoking_habits, :height, :star_sign, :drink_frequency, :favourite_tipple, :weight, :education, :about_you, :likes_and_dislikes, :looking_for, :religion]
+  end
+
   def self.education_options
     [["Secondary School", 0], ["College", 1], ["Bachelor's Degree", 2], ["Master's Degree", 3], ["PhD", 4]]
   end
-
 end
