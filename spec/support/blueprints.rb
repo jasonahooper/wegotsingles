@@ -10,7 +10,14 @@ end
 
 User.blueprint do
   first_name { "John" }
-  email { "john.smith@email.com" }
+  email { Faker::Internet.email }
+  password { 'password' }
+  confirmed_at { Time.now }
+end
+
+User.blueprint(:different_user) do
+  first_name { "Sally" }
+  email { "sally@email.com" }
   password { 'password' }
   confirmed_at { Time.now }
 end
@@ -52,3 +59,25 @@ PaymentOption.blueprint do
   currency { 'GBP' }
   code { "premium-monthly" }
 end
+
+Message.blueprint do
+  
+end
+
+Message.blueprint(:from_man) do
+  subject { "I'm a man!" }
+  body { "Cars!" }
+end
+
+Message.blueprint(:from_woman) do
+  subject { "I'm a woman!" } 
+  body { "Horses!" }
+end
+
+Man.blueprint do
+end
+
+Woman.blueprint do
+end
+
+
