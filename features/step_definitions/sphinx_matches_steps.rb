@@ -29,9 +29,11 @@ Given(/^there is a matching person far away$/) do
 end
 
 Then(/^he will see the close person$/) do
-  pending # express the regexp above with the code you wish you had
+  assert 1, page.all("h3", :text => @miss_right.first_name ).count
+  assert page.has_link? "My Profile", profile_user_path(@miss_right)
 end
 
 Then(/^he will not see the far person$/) do
-  pending # express the regexp above with the code you wish you had
+  assert 0, page.all("h3", :text => @far_miss_right.first_name ).count
+  assert !page.has_link?("My Profile", profile_user_path(@far_miss_right))
 end

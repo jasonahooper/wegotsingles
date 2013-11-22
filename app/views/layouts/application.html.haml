@@ -36,6 +36,8 @@
             = link_to 'My Profile', user_profile_path(current_user, current_user.profile)
           %li
             = link_to 'My Matches', profiles_results_user_path(current_user.id)
+          %li
+            = link_to 'My Nearby Matches', profiles_results_user_path(current_user.id, :type => 'vicinity')
 
 
     .clear
