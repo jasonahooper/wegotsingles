@@ -20,6 +20,8 @@ gem 'stripe'
 gem 'tinymce-rails'
 gem "fog", "~> 1.3.1"
 gem 'nokogiri', '~> 1.5.0'
+gem 'thinking-sphinx'
+gem 'mysql2'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'

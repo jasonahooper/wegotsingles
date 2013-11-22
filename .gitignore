@@ -18,3 +18,7 @@ config/database.yml
 
 coverage
 public/uploads
+
+db/sphinx
+log/*
+
