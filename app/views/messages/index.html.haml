@@ -1,0 +1,8 @@
+%h2
+  All messages
+
+  .messages
+    - @messages.each do |m|
+      =m.subject
+      =m.body
+      %br

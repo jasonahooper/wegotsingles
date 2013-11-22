@@ -6,6 +6,7 @@
     %span.actions
       = link_to 'Edit', edit_user_profile_path(@profile.user, @profile)
 
+
   %section.profile-body
     %section.col.profile-images
       - if @profile.main_image
@@ -93,5 +94,7 @@
 
       .fact.languages
         %h3 Languages: #{@profile.languages.map{|l| l.language}.join(',')}
+
+  =render :partial => "messages/new_message"
 
 .clear
