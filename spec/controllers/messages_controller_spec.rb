@@ -1,18 +1,40 @@
 require 'spec_helper'
 
 describe MessagesController do
-  before do
-    @john = User.make!
-    @sally = User.make!(:different_user)
-    @message_from_john = Message.make!(:from_man)
-    @message_from_sally = Message.make!(:from_woman)
-    @message_from_john.to_id = @john.id
-    @message_from_john.from_id = @sally.id
+  context "logged in user" do
+    before do
+      @john = User.make!
+      sign_in @john
+      @sally = User.make!(:different_user)
+    end
+
+    context "sending a message" do
+      before do
+        @valid_params = { :message => { :subject => "Hello. I have monkeys", 
+          :body => "Lets go to the zoo", 
+          :to_id => @sally }
+        }
+        post :create, @valid_params
+      end
+
+      it "should increase the message count" do
+        Message.count.should eq(1)
+      end
+
+      it "should have the correct information" do
+        Message.first.subject.should include(@valid_params[:message][:subject])
+        Message.first.body.should include(@valid_params[:message][:body])
+      end
+      
+      it "sally should have her own message" do
+        @sally.reload.received_messages.count.should eq(1)
+        @sally.reload.received_messages.first.subject.should include(@valid_params[:message][:subject])
+      end
+
+      it "john should have his own sent message" do
+        @john.reload.sent_messages.count.should eq(1)
+        @john.reload.sent_messages.first.subject.should include(@valid_params[:message][:subject])
+      end
+    end
   end
-
-  it "sends a message from timmy to sally" do
-    @message_from_john.to
-  end
-
-
 end
