@@ -6,7 +6,6 @@ Woman.blueprint do
   profile { Profile.make! }
 end
 
-
 Woman.blueprint(:miss_right) do
   first_name { "Miss Right" }
   email { Faker::Internet.email }
@@ -54,6 +53,13 @@ User.blueprint do
   lng { 0 }
 end
 
+User.blueprint(:different_user) do
+  first_name { "Sally" }
+  email { "sally@email.com" }
+  password { 'password' }
+  confirmed_at { Time.now }
+end
+
 User.blueprint(:with_stripe) do
   stripe_customer_id { 'cus_2yc1BvwsPNa1Dn' }
   type { 'Man' }
@@ -86,4 +92,25 @@ PaymentOption.blueprint do
   name { "Premium Monthly" }
   currency { 'GBP' }
   code { "premium-monthly" }
+end
+
+Message.blueprint do
+  subject { }
+  body {  }
+end
+
+Message.blueprint(:from_man) do
+  subject { "I'm a man!" }
+  body { "Cars!" }
+end
+
+Message.blueprint(:from_woman) do
+  subject { "I'm a woman!" }
+  body { "Horses!" }
+end
+
+Man.blueprint do
+end
+
+Woman.blueprint do
 end

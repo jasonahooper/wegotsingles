@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20131122173126) do
     t.datetime "updated_at"
   end
 
+  create_table "messages", force: true do |t|
+    t.text     "body"
+    t.string   "subject"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "to_id"
+    t.integer  "from_id"
+    t.integer  "reply_id"
+  end
+
   create_table "payment_options", force: true do |t|
     t.integer  "amount"
     t.string   "interval"
@@ -60,14 +70,14 @@ ActiveRecord::Schema.define(version: 20131122173126) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "height"
     t.string   "occupation"
     t.string   "star_sign"
     t.integer  "star_sign_interest_level"
-    t.integer  "height"
-    t.string   "drink_frequency"
-    t.string   "favourite_tipple"
     t.string   "smoking_habits"
     t.integer  "weight"
+    t.string   "drink_frequency"
+    t.string   "favourite_tipple"
     t.integer  "education"
     t.text     "about_you"
     t.text     "likes_and_dislikes"
@@ -100,9 +110,9 @@ ActiveRecord::Schema.define(version: 20131122173126) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.string   "stripe_customer_id"
-    t.string   "seeking"
     t.float    "lat"
     t.float    "lng"
+    t.string   "seeking"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

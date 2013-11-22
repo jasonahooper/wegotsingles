@@ -21,6 +21,10 @@
     = f.text_field :first_name
 
   %div
+    = f.label :seeking, "I am looking for"
+    = f.select :seeking, [["Men", "Man"],["Women", "Woman"]]
+
+  %div
     = f.label :password
     = f.password_field :password
 

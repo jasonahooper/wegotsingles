@@ -1,5 +1,4 @@
 Feature: Registration
-
   Scenario: A man signs up 
     Given That a man is on the registration page
     When he completes the registration form with valid data
@@ -21,4 +20,11 @@ Feature: Registration
     Then an email is sent
     And the email should contain a confirmation link
     When he clicks on the link
-    Then he is taken to the sign in page and notified of his successful confirmation  
+    Then he is taken to the sign in page and notified of his successful confirmation 
+
+  Scenario: A man selects his preference
+    Given That a man is on the registration page
+    When he completes the registration form with valid data
+    And he selects "Women" from "I am looking for"
+    And he click the "Sign up" button
+    Then she should be taken to the new profile page

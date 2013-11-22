@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe User do
+  it { should have_many(:received_messages) }
+  it { should have_many(:sent_messages) }
   context "associations" do
     it { should have_one(:profile) }
   end
