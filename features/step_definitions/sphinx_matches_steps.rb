@@ -3,7 +3,7 @@ Given(/^that a user is registered$/) do
 end
 
 Given(/^there are people in the database$/) do
-  10.times {Woman.make!}
+  10.times {Woman.make!(:email => Faker::Internet.email)}
   Man.make!(:mr_right)
 end
 
