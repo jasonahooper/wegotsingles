@@ -1,10 +1,10 @@
 %h3
-  Received Messages
+  Sent Messages
 
 .messages_inbox
-  - @user.received_messages.each do |m|
+  - @user.sent_messages.each do |m|
     %ul
       %li
         = link_to m.subject, message_path(m)
       %li
-        = m.from.first_name
+        = m.to.first_name

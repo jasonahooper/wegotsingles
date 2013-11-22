@@ -6,13 +6,15 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+    @reply = Message.new(:reply_id => @message)
   end
 
   def create
     @message = Message.new(message_params)
     @message.from = current_user
     @message.save!
-    render :nothing => true
+    flash[:notice] = "Your message has been sent"
+    redirect_to messages_path
   end
 
   private
