@@ -43,6 +43,12 @@ module ProfilesHelper
     end
   end
 
-
-
+  def preference(seeking)
+    case seeking
+    when "Woman"
+      "women"
+    when "Man"
+      "men"
+    end
+  end
 end

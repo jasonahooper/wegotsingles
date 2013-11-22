@@ -23,6 +23,9 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
+    if user_signed_in?
+      @message = Message.new(:to => @profile.user, :from => current_user)
+    end
   end
 
   def results

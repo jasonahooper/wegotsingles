@@ -1,0 +1,17 @@
+.new_message
+  %h2 
+    New message 
+
+  #new-message
+    =form_for(@message, url: messages_path) do |f|
+      =f.hidden_field :to_id
+
+      %fieldset
+        = f.label :subject
+        = f.text_field :subject
+      %fieldset.large_text_area
+        = f.label :body
+        = f.text_area :body
+      %div
+        = f.submit "Send"
+

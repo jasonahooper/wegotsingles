@@ -46,4 +46,3 @@ end
 Then(/^he is taken to the sign in page and notified of his successful confirmation$/) do
   assert page.find(".flash", "Your account was successfully confirmed")
 end
-
