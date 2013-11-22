@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121180952) do
+ActiveRecord::Schema.define(version: 20131122173126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20131121180952) do
     t.string   "language"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.text     "body"
+    t.string   "subject"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "to_id"
+    t.integer  "from_id"
+    t.integer  "reply_id"
   end
 
   create_table "payment_options", force: true do |t|
@@ -103,6 +113,7 @@ ActiveRecord::Schema.define(version: 20131121180952) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.string   "stripe_customer_id"
+    t.string   "seeking"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

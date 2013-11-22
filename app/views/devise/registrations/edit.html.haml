@@ -35,18 +35,18 @@
     = f.date_select :date_of_birth, {:start_year => (earliest_year_to_join), :end_year => 1900}
 
   .form-row
-    = f.submit "Update"
+    = f.submit "Update", :class => "button"
 
   .account-options
     %h3
-      Cancel my account
+      Found someone?
 
-    = button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
+    = button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => "button-danger"
 
   - if current_user.stripe_customer_id && current_user.type == 'Man'
     .account-options
       %h3
-        Cancel my Subscription
+        Hard up?
 
-      = button_to "Cancel my subscription", payments_path, :data => { :confirm => "Are you sure?" }, :method => :delete
+      = button_to "Cancel my subscription", payments_path, :data => { :confirm => "Are you sure?" }, :method => :delete, :class => "button-danger"
 

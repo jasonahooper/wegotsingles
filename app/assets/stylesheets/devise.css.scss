@@ -1,0 +1,18 @@
+@import 'colours.css.scss';
+
+.devise-links {
+  border-top: 1px solid $grey;
+  padding: 1em;
+
+  a {
+    color: $main_colour;
+    display: inline;
+    border-right: 1px solid $main_colour;
+    margin-right: 10px;
+    padding-right: 10px;
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+}

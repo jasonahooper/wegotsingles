@@ -1,2 +1,28 @@
-%h3
-  Welcome to my lovely homepage
+#homepage
+  %h2
+    Welcome
+
+  %h3
+    Meet like-minded, gorgeous singles near you with We Got Singles!
+
+  .guys.preview
+    %h5
+      Recently Joined Gents
+
+    - @men.each do |u|
+      = render :partial => 'users/user', :object => u
+
+  .gals.preview
+    %h5
+      Recently Joined Ladies
+
+    - @women.each do |u|
+      = render :partial => 'users/user', :object => u
+
+
+  .join-now
+    %h3
+      Join Now!
+
+    = link_to 'Sign Up Guys!', account_registration_path("Man")
+    = link_to 'Sign Up Girls!', account_registration_path("Woman")
