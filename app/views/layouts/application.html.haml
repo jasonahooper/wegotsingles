@@ -18,17 +18,19 @@
     .flash.alert
       =flash[:alert]
   %nav
-    %h1#main-logo= "We Got Singles"
+    %h1#main-logo
+      = link_to "We Got Singles", root_path
 
     .nav-links
       %ol
-        %li
-          = link_to 'Sign In', new_user_session_path
-        %li
-          = link_to 'Sign Up Guys!', account_registration_path("Man")
-        %li
-          = link_to 'Sign Up Girls!', account_registration_path("Woman")
-        - if user_signed_in?
+        - unless user_signed_in?
+          %li
+            = link_to 'Sign In', new_user_session_path
+          %li
+            = link_to 'Sign Up Guys!', account_registration_path("Man")
+          %li
+            = link_to 'Sign Up Girls!', account_registration_path("Woman")
+        - else
           -if current_user.type == 'Man' && !current_user.stripe_customer_id
             %li
               = link_to 'Premium Membership', new_payment_path
@@ -39,6 +41,7 @@
           %li
             = link_to 'My Nearby Matches', profiles_results_user_path(current_user.id, :type => 'vicinity')
 
+            = link_to 'My Account', edit_user_registration_path
 
     .clear
 

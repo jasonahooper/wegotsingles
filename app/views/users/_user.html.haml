@@ -1,0 +1,5 @@
+.user
+  - if user.profile.main_image
+    = image_tag user.profile.main_image.image.thumb.url, :alt => user.username
+  - else
+    = default_image_tag user

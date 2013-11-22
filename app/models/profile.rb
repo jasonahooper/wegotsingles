@@ -5,24 +5,22 @@ class Profile < ActiveRecord::Base
   has_many :profile_languages
   has_many :languages, :through => :profile_languages
   has_many :images
+  belongs_to :main_image, :class_name => 'Image', :foreign_key => 'main_image_id'
   accepts_nested_attributes_for :images, :allow_destroy => true
 
   attr_accessor :string_education, :imperial, :imperial_bln_weight, :metric_height, :imperial_height, :imperial_weight, :metric_weight
 
   before_save :calculate_progress
-  def self.progress_attributes
-    [:occupation, :smoking_habits, :height, :star_sign, :drink_frequency, :favourite_tipple, :weight, :education, :about_you, :likes_and_dislikes, :looking_for, :religion]
-  end
 
   def calculate_progress
     @number_of_attributes = Profile.progress_attributes.count
     filled_array_values = Profile.progress_attributes.select { |x| self.send(x).blank? == false }
     number_of_filled_values = filled_array_values.count
-    percentage = 80.0 / @number_of_attributes 
+    percentage = 80.0 / @number_of_attributes
     total_percentage = number_of_filled_values.to_f * percentage
     @destruction = images.select { |x| x.marked_for_destruction? }
     @keepers = images.length - @destruction.length
-    if @keepers > 0 
+    if @keepers > 0
       total_percentage += 20.0
     end
     self.progress = total_percentage
@@ -45,18 +43,6 @@ class Profile < ActiveRecord::Base
     pounds = weight.to_f*14.0
     kilograms = pounds.pounds.to_kilograms
     kilograms.to_i.round(1)
-  end
-
-  def imperial_height_show
-    h = BigDecimal.new(self.imperial_height, 3)
-    feet, inches = h.fix.to_i, (h.frac*10).to_i
-    return [feet, inches]
-  end
-
-  def imperial_weight_show
-    w = BigDecimal.new(self.imperial_weight, 3)
-    stones, pounds = w.fix.to_i, (w.frac*10).to_i
-    return [stones, pounds]
   end
 
   def imperial_height=(height)
@@ -105,8 +91,17 @@ class Profile < ActiveRecord::Base
     read_attribute :weight
   end
 
+  def matches
+    seeking = self.user.type == "Man" ? "Woman" : "Man"
+    search_term = "#{self.looking_for} #{self.likes_and_dislikes} #{self.about_you}".strip
+    Profile.search "\"#{search_term}\"/1", :conditions => { :sex => seeking }
+  end
+
+  def self.progress_attributes
+    [:occupation, :smoking_habits, :height, :star_sign, :drink_frequency, :favourite_tipple, :weight, :education, :about_you, :likes_and_dislikes, :looking_for, :religion]
+  end
+
   def self.education_options
     [["Secondary School", 0], ["College", 1], ["Bachelor's Degree", 2], ["Master's Degree", 3], ["PhD", 4]]
   end
-
 end

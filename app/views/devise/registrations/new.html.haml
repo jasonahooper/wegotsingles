@@ -4,39 +4,33 @@
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
   = devise_error_messages!
 
-  %div 
+  %div
     = f.label :username
-    %br
     = f.text_field :username
 
   %div
     = f.label :date_of_birth
-    %br
     = f.date_select :date_of_birth, {:start_year => (earliest_year_to_join), :end_year => 1900}
 
   %div
     = f.label :email
-    %br
     = f.email_field :email, :autofocus => true
 
   %div
     = f.label :first_name
-    %br
-    = f.text_field :first_name 
+    = f.text_field :first_name
 
   %div
     = f.label :password
-    %br
     = f.password_field :password
 
   %div
     = f.label :password_confirmation
-    %br
     = f.password_field :password_confirmation
 
   = f.hidden_field :type
 
   %div
-    = f.submit "Sign up"
+    = f.submit "Sign up", :class => "button"
 
 = render "devise/shared/links"

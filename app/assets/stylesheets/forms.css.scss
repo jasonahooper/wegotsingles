@@ -1,0 +1,19 @@
+@import 'colours.css.scss';
+@import 'fonts.css.scss';
+
+label {
+  width: 220px;
+  float: left;
+  clear: left;
+  line-height: 36px;
+  height: 36px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  border: 2px solid $grey;
+  padding: 0.5em;
+  @include main-font;
+  color: $main_colour;
+  border-radius: 3px;
+  width: 200px;
+}
