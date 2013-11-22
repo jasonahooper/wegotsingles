@@ -15,8 +15,8 @@ describe Image do
       @image.image.thumb.should have_dimensions(80, 80)
     end
 
-    it "should create an image of exactly 400 by 400 pixels" do
-      @image.image.should have_dimensions(400, 400)
+    it "should create an image of exactly 320 by 320 pixels" do
+      @image.image.should have_dimensions(320, 320)
     end
 
     it "should scale down an image to fit within 400 by 400 pixels" do

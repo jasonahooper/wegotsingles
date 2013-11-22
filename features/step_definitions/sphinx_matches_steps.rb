@@ -20,7 +20,6 @@ When(/^he follows the "(.*?)" link$/) do |link|
 end
 
 Then(/^he will see that person$/) do
-  save_and_open_page
   assert page.find("h3", :text => @miss_right.first_name )
   assert page.has_link? "My Profile", profile_user_path(@miss_right)
 end

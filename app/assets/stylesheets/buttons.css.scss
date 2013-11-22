@@ -1,0 +1,22 @@
+@import 'colours.css.scss';
+
+@mixin button {
+  background: $join-button;
+  color: $off_white;
+  font-size: 1.2em;
+  padding: 0.5em;
+  border: 2px solid $off_white;
+  border-radius: 12px;
+  text-decoration: none;
+  margin: 1em;
+  cursor: pointer;
+}
+
+.button {
+  @include button;
+}
+
+.button-danger {
+  @extend .button;
+  background: $danger;
+}

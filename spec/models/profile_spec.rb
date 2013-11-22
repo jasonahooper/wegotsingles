@@ -7,13 +7,14 @@ describe Profile do
   it { should have_many(:profile_languages) }
   it { should have_many(:languages).through(:profile_languages)}
   it { should have_many(:images) }
+  it { should belong_to(:main_image) }
   it { should accept_nested_attributes_for(:images) }
 
   describe "profile progress" do
     before do
       @profile = Profile.make!(:without_height)
       @number_of_attributes = Profile.progress_attributes.count
-      @percentage = 80.0 / @number_of_attributes 
+      @percentage = 80.0 / @number_of_attributes
       @profile.save!
     end
 
