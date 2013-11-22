@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121180952) do
+ActiveRecord::Schema.define(version: 20131122093203) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "ethnicities", force: true do |t|
     t.string   "ethnicity"
@@ -30,6 +33,15 @@ ActiveRecord::Schema.define(version: 20131121180952) do
     t.string   "language"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.text     "body"
+    t.string   "subject"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "to_id"
+    t.integer  "from_id"
   end
 
   create_table "payment_options", force: true do |t|
@@ -60,14 +72,14 @@ ActiveRecord::Schema.define(version: 20131121180952) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "smoking_habits"
     t.integer  "height"
     t.string   "occupation"
     t.string   "star_sign"
     t.integer  "star_sign_interest_level"
-    t.string   "smoking_habits"
-    t.integer  "weight"
     t.string   "drink_frequency"
     t.string   "favourite_tipple"
+    t.integer  "weight"
     t.integer  "education"
     t.text     "about_you"
     t.text     "likes_and_dislikes"
