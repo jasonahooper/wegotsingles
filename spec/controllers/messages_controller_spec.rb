@@ -10,8 +10,8 @@ describe MessagesController do
 
     context "sending a message" do
       before do
-        @valid_params = { :message => { :subject => "Hello. I have monkeys", 
-          :body => "Lets go to the zoo", 
+        @valid_params = { :message => { :subject => "Hello. I have monkeys",
+          :body => "Lets go to the zoo",
           :to_id => @sally }
         }
         post :create, @valid_params
@@ -25,7 +25,7 @@ describe MessagesController do
         Message.first.subject.should include(@valid_params[:message][:subject])
         Message.first.body.should include(@valid_params[:message][:body])
       end
-      
+
       it "sally should have her own message" do
         @sally.reload.received_messages.count.should eq(1)
         @sally.reload.received_messages.first.subject.should include(@valid_params[:message][:subject])

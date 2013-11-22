@@ -1,0 +1,12 @@
+%h3
+  Received Messages
+
+.messages_inbox
+  - @user.received_messages.each do |m|
+    %ul
+      %li
+        = m.subject
+      %li
+        = m.body
+      %li
+        = m.from.first_name
