@@ -1,7 +1,8 @@
 #results
   %ul
     - @results.each do |match|
-      %li
+      %li.result
+        =image_tag( match.main_image.thumb.url ) if match.main_image
         %h3
           = match.user.first_name
-          = link_to "My Profile", profile_user_path(match.user.id)
+        = link_to "My Profile", profile_user_path(match.user.id)

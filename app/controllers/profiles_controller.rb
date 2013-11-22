@@ -26,14 +26,7 @@ class ProfilesController < ApplicationController
   end
 
   def results
-    current_user.type == "Man" ? seeking = "Woman" : seeking = "Man"
-    if current_user.profile.looking_for
-      @results = Profile.search "\"#{current_user.profile.looking_for}\"/1 @sex #{seeking}"
-    elsif current_user.profile.about_you
-      @results = Profile.search "\"#{current_user.profile.about_you}\"/1 @sex #{seeking}"
-    else
-      @results = Profile.search " ", :condition => {:sex => seeking }
-    end
+    @results = current_user.profile.matches
   end
 
   private
