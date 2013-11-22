@@ -20,7 +20,18 @@ When(/^he follows the "(.*?)" link$/) do |link|
 end
 
 Then(/^he will see that person$/) do
-  save_and_open_page
   assert page.find("h3", :text => @miss_right.first_name )
   assert page.has_link? "My Profile", profile_user_path(@miss_right)
+end
+
+Given(/^there is a matching person far away$/) do
+  @far_miss_right = Woman.make!(:miss_right, :lat => 53, :lng => 2)
+end
+
+Then(/^he will see the close person$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^he will not see the far person$/) do
+  pending # express the regexp above with the code you wish you had
 end

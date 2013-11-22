@@ -3,7 +3,7 @@ require 'machinist/active_record'
 Woman.blueprint do
   first_name { Faker::Name.first_name }
   email { Faker::Internet.email }
-  profile { Profile.make! } 
+  profile { Profile.make! }
 end
 
 
@@ -50,6 +50,8 @@ User.blueprint do
   email { "john.smith@email.com" }
   password { 'password' }
   confirmed_at { Time.now }
+  lat { 51 }
+  lng { 0 }
 end
 
 User.blueprint(:with_stripe) do
