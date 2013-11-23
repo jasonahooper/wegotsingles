@@ -6,7 +6,6 @@ Woman.blueprint do
   profile { Profile.make! }
 end
 
-
 Woman.blueprint(:miss_right) do
   first_name { "Miss Right" }
   email { Faker::Internet.email }

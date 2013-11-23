@@ -6,6 +6,7 @@ Given(/^there are people in the database$/) do
   10.times {Woman.make!(:email => Faker::Internet.email,
     :first_name => Faker::Name.first_name)}
   Man.make!(:mr_right)
+  # 10.times {Woman.make!(:email => Faker::Internet.email)}
 end
 
 Given(/^there is a matching person to the current user$/) do
