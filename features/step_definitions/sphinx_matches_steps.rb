@@ -3,7 +3,10 @@ Given(/^that a user is registered$/) do
 end
 
 Given(/^there are people in the database$/) do
-  10.times {Woman.make!(:email => Faker::Internet.email)}
+  10.times {Woman.make!(:email => Faker::Internet.email,
+    :first_name => Faker::Name.first_name)}
+  Man.make!(:mr_right)
+  # 10.times {Woman.make!(:email => Faker::Internet.email)}
 end
 
 Given(/^there is a matching person to the current user$/) do
@@ -19,20 +22,19 @@ When(/^he follows the "(.*?)" link$/) do |link|
 end
 
 Then(/^he will see that person$/) do
-  assert page.find("h3", :text => @miss_right.first_name )
-  assert page.has_link? "My Profile", profile_user_path(@miss_right)
+  assert page.has_link? "My Profile", :href => profile_user_path(@miss_right)
 end
 
 Given(/^there is a matching person far away$/) do
-  @far_miss_right = Woman.make!(:miss_right, :lat => 53, :lng => 2)
+  @far_miss_right = Woman.make!(:miss_right, :lat => 55, :lng => 5,
+    :first_name => 'Far Miss Right')
 end
 
 Then(/^he will see the close person$/) do
   assert 1, page.all("h3", :text => @miss_right.first_name ).count
-  assert page.has_link? "My Profile", profile_user_path(@miss_right)
+  assert page.has_link? "My Profile", :href => profile_user_path(@miss_right)
 end
 
 Then(/^he will not see the far person$/) do
-  assert 0, page.all("h3", :text => @far_miss_right.first_name ).count
-  assert !page.has_link?("My Profile", profile_user_path(@far_miss_right))
+  assert !page.has_link?("My Profile", :href => profile_user_path(@far_miss_right))
 end

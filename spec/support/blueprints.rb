@@ -50,7 +50,9 @@ User.blueprint do
   password { 'password' }
   confirmed_at { Time.now }
   lat { 51 }
+  # lat { 51 * Math::PI / 180 }
   lng { 0 }
+  # lng { 0 * Math::PI / 180 }
 end
 
 User.blueprint(:different_user) do
