@@ -29,18 +29,21 @@ class ProfilesController < ApplicationController
   end
 
   def results
-      # @results = Profile.search("", :geo => [current_user.lat, current_user.lng],
-        # :with => {:geodist => (0.0..5000.0)})
-    @results = current_user.profile.matches
+    param = {}
+    if params[:type]
+      if params[:type] == 'vicinity'
+        # param = { :geo => [current_user.lat, current_user.lng],
+        param = { :geo => [current_user.lat * Math::PI / 180,
+          current_user.lng * Math::PI / 180],
+          :with => {:geodist => (0.0..5_000.0) }
+        }
+      end
+    end
+    @results = current_user.profile.matches param
   end
 
   private
   def profile_params
-    # params.require(:profile).permit(:religion, :religion_interest_level, :about_you,
-    #   :likes_and_dislikes, :looking_for, :education, :favourite_tipple, :drink_frequency,
-    #   :smoking_habits, :star_sign, :star_sign_interest_level, :occupation, :imperial, :height,
-    #   :metric_height, :imperial_height, :imperial_bln_weight, :weight, :metric_weight,
-    #   :imperial_weight, :images_attributes => [ :image, :id, :_destroy, :remove_image ],
     params.require(:profile).permit(:main_image_id, :religion, :religion_interest_level, :about_you,
       :likes_and_dislikes, :looking_for, :education, :favourite_tipple, :drink_frequency,
       :smoking_habits, :star_sign, :star_sign_interest_level, :occupation, :imperial, :height,

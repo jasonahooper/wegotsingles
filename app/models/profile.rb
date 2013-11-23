@@ -91,10 +91,12 @@ class Profile < ActiveRecord::Base
     read_attribute :weight
   end
 
-  def matches
+  def matches(options={})
     seeking = self.user.type == "Man" ? "Woman" : "Man"
     search_term = "#{self.looking_for} #{self.likes_and_dislikes} #{self.about_you}".strip
-    Profile.search "\"#{search_term}\"/1", :conditions => { :sex => seeking }
+    search_params = { :conditions => { :sex => seeking } }
+    search_params = search_params.merge( options )
+    Profile.search "\"#{search_term}\"/1", search_params
   end
 
   def self.progress_attributes
