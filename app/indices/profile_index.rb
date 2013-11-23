@@ -9,8 +9,8 @@ ThinkingSphinx::Index.define :profile, :with => :active_record do
   # has geocoding.geocode(:id), :as => :geocode_id
   # has "RADIANS(user.lat)",  :as => :latitude,  :type => :float
   # has "RADIANS(user.lng)", :as => :longitude, :type => :float
-  has "RADIANS(user.lat)",  :as => :lat,  :type => :float
-  has "RADIANS(user.lng)", :as => :lng, :type => :float
+  has "RADIANS(users.lat)",  :as => :lat,  :type => :float
+  has "RADIANS(users.lng)", :as => :lng, :type => :float
 
   # If you're using PostgreSQL:
   # group_by 'latitude', 'longitude'
