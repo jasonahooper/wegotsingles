@@ -13,12 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20131122173126) do
 
-<<<<<<< HEAD
-=======
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
->>>>>>> dev
   create_table "ethnicities", force: true do |t|
     t.string   "ethnicity"
     t.datetime "created_at"
